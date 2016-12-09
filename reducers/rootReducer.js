@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import counter from './counter'
+import conversation from './conversation'
 
 const rootReducer = combineReducers({
-  counter,
+  conversation,
 })
 
 export default rootReducer;
