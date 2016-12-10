@@ -8,7 +8,7 @@ const makeConversation = (text) => {
 }
 
 export default (state = [], action) => {
-  switch (action.type) {
+ switch (action.type) {
     case 'ADD_CONVERSATION_ITEM':
       return [...state, makeConversation('new conversation')]
     default:

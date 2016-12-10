@@ -1,7 +1,10 @@
 'use babel'
 
 import React from 'react'
-import Conversation from '../components/conversation'
+import Channels from '../components/channels'
+import addChannelsFromFile from '../util/addChannelsFromFile'
+import { remote } from 'electron';
+const documentsPath = remote.app.getPath('documents');
 
 export default class Root extends React.Component {
   render() {
@@ -9,11 +12,11 @@ export default class Root extends React.Component {
     console.log('store in root component:', store.getState())
     return <div>
       <button
-        onClick={() => store.dispatch({ type: 'ADD_CONVERSATION_ITEM' })}>
-      Add text
+        onClick={() => addChannelsFromFile(store, documentsPath + '/slackexported/channels.json')}>
+      Add channels
       </button>
-      <Conversation
-        items={store.getState().conversation}
+      <Channels
+        channels={store.getState().channels}
       />
     </div>;
   }
