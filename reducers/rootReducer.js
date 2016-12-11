@@ -1,10 +1,17 @@
-import { combineReducers } from 'redux'
 import channels from './channels'
 import conversation from './conversation'
+import loadDefaultSlack from './loadDefaultSlack'
 
-const rootReducer = combineReducers({
-  channels,
-  conversation
-})
+export default (state = {}, action) => {
+  
+  console.log('handling action:', action)
 
-export default rootReducer;
+  // reducers that work on whole state
+  state = loadDefaultSlack(state, action)
+
+  // reducers that work on submsets
+  state.channels = channels(state.channels, action)
+  state.conversation = conversation(state.conversation, action)
+ 
+  return state
+}
