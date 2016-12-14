@@ -1,5 +1,9 @@
 import makeId from '../util/makeId'
 
+export const addConversationInView = (state, newChannel) => {
+	return [...state, {id: newChannel.id, name: newChannel.name}]
+}
+
 const makeConversation = (text) => {
   return {
     text: text,
