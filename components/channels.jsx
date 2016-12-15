@@ -5,7 +5,7 @@ import { loadChannel } from '../actions/index.js'
 export default class Channels extends Component {
   render() {
 		const { store } = this.context;
-		const { channels } = this.props
+		const { channels } = store.getState()
 		const channelOnClick = (channelName) => {
 			store.dispatch(loadChannel(store.getState().achiveRootPath, channelName))
 		}
@@ -25,6 +25,6 @@ export default class Channels extends Component {
 Channels.contextTypes = {
   store: React.PropTypes.object
 }
-Channels.propTypes = {
-  channels: PropTypes.array.isRequired
-}
+//Channels.propTypes = {
+//  channels: PropTypes.array.isRequired
+//}

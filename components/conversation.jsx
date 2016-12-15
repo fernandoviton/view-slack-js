@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 
 export default class Conversation extends Component {
-  render() {
+	render() {
 		const { items } = this.props
     return (
 			<ul>

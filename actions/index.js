@@ -3,7 +3,13 @@ export const loadDefaultSlack = (path) => ({
 	path
 })
 
-export const loadChannel = (rootPath, channelName) => ({
+export const loadChannel = (rootArchivePath, channelName) => ({
 	type: 'LOAD_CHANNEL_FROM_ARCHIVE',
-	channelPath: rootPath + channelName + '/'
+	rootArchivePath,
+	channelName
+})
+
+export const loadConversation = (rootPath, channelName, dailyFilename) => ({
+	type: 'LOAD_CONVERSATION_FROM_DAILY_ARCHIVE',
+	path: rootPath + channelName + '/' + dailyFilename
 })

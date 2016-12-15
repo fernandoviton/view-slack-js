@@ -11,14 +11,10 @@ export default class Root extends React.Component {
     console.log('store on Root render:', store.getState())
     return <div>
       <div>
-        <Channels
-          channels={store.getState().channels}
-        />
+        <Channels/>
       </div>
       <div>
-        <MessageGroups
-          messageGroups={store.getState().messageGroups}
-        />
+        <MessageGroups/>
       </div>
     </div>
   }

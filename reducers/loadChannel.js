@@ -1,21 +1,26 @@
-import fs from 'fs'
 import { createMessageGroup } from './messageGroups'
+import { getDailyArchiveNames } from '../util/loadArchives'
+import { makePath } from '../util/paths'
 
-const getExtension = (filename) => {
-	const afterDot = filename.substr(filename.lastIndexOf('.') + 1)
-	if (afterDot === filename)
-		return ''
-	else
-		return afterDot.toLowerCase()
+const loadDailyArchive = (path) => {
+	const fileContent = fs.readFileSync(action.path)
+	return JSON.parse(fileContent)
+}
+
+const loadChannel = (rootArchivePath, channelName) => {
+	const path = makePath(rootArchivePath, channelName)
+	return {
+		messageGroups: 
+			getDailyArchiveNames(path)
+				.map((filename) => createMessageGroup(filename, filename)),
+		currentChannel: channelName
+	}
 }
 
 export default (state = {}, action) => {
   switch (action.type) {
 		case 'LOAD_CHANNEL_FROM_ARCHIVE':
-			state = fs.readdirSync(action.channelPath)
-				.filter((filename, _, __) => getExtension(filename) === "json")
-				.map((filename) => createMessageGroup(filename, filename))
-			return state;		
+			return loadChannel(action.rootArchivePath, action.channelName)
     default:
       return state
   }
