@@ -11,8 +11,6 @@ export default (state = {}, action) => {
   state = loadDefaultSlack(state, action)
   state.currentConversation = loadChannel(state.currentConversation, action)
   state.channels = channels(state.channels, action)
-  state.conversation = conversation(state.conversation, action)
-  state.messageGroups = messageGroups(state.messageGroups, action)
  
   return state
 }

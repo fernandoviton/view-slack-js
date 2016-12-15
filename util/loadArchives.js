@@ -1,9 +1,13 @@
 import fs from 'fs'
-import makePath from './paths'
+import { makePath } from './paths'
 
 export const getDailyArchiveNames = (channelArchivePath) => {
 	return fs.readdirSync(channelArchivePath)
 		.filter((filename, _, __) => getExtension(filename) === "json")
+}
+
+export const getChannelsAsJson = (rootArchivePath) => {
+	return JSON.parse(fs.readFileSync(makePath(rootArchivePath, 'channels.json')))
 }
 
 
