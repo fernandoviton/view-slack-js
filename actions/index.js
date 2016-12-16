@@ -1,12 +1,15 @@
+import { getDailyArchiveNames } from '../util/loadArchives'
+
 export const loadDefaultSlack = (path) => ({
 	type: 'LOAD_DEFAULT_SLACK_ARCHIVE',
 	path
 })
 
-export const loadChannel = (rootArchivePath, channelName) => ({
+export const loadChannel = (rootArchivePath, channelName, getMessageGroupNames = getDailyArchiveNames) => ({
 	type: 'LOAD_CHANNEL_FROM_ARCHIVE',
 	rootArchivePath,
-	channelName
+	channelName,
+	getMessageGroupNames
 })
 
 export const loadConversation = (rootPath, channelName, dailyFilename) => ({
