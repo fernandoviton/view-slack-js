@@ -1,8 +1,15 @@
-import { combineReducers } from 'redux'
-import counter from './counter'
+import channels from './channels'
+import currentConversation from './currentConversation'
+import messageGroups from './messageGroups'
+import loadDefaultSlack from './loadDefaultSlack'
 
-const rootReducer = combineReducers({
-  counter,
-})
+export default (state = {}, action) => {
+  
+  console.log('handling action:', action)
 
-export default rootReducer;
+  state = loadDefaultSlack(state, action)
+  state.channels = channels(state.channels, action)
+  state.currentConversation = currentConversation(state.currentConversation, action)
+ 
+  return state
+}
