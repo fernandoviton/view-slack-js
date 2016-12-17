@@ -6,3 +6,13 @@ state
 	-currentMessageGroup
 	-messageGroups
 	-items
+
+
+	newState
+	- channels
+		- isLoading
+		- items
+	- conversation
+		- isLoading
+		- channelName
+		- messageGroups

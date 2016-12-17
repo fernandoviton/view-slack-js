@@ -14,7 +14,7 @@ export default class Root extends React.Component {
         <Channels/>
       </div>
       <div>
-        <MessageGroups/>
+        <Conversation/>
       </div>
     </div>
   }
