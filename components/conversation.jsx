@@ -1,18 +1,16 @@
 import React, { Component, PropTypes } from 'react'
+import MessageGroups from './messageGroups'
 
 export default class Conversation extends Component {
 	render() {
-		const { items } = this.props
+    const { store } = this.context;
     return (
-			<ul>
-				{items.map(function(listValue){
-            return <li key={listValue.id}>{listValue.text}</li>;
-          })}
-			</ul>
+      <div>
+        <MessageGroups/>
+      </div>
       );
   }
 }
-
-Conversation.propTypes = {
-  items: PropTypes.array.isRequired
+Conversation.contextTypes = {
+  store: React.PropTypes.object
 }

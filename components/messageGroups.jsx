@@ -4,12 +4,9 @@ import { loadConversation } from '../actions/index.js'
 export default class MessageGroups extends Component {
   render() {
 		const { store } = this.context
-		const { messageGroups } = store.getState().conversation
+		const { messageGroups, channelName } = store.getState().conversation
 		const onClick = (messageGroupName) => {
-			store.dispatch(loadConversation(
-				store.getState().achiveRootPath, 
-				store.getState().currentChannelName,
-				messageGroupName))
+			store.dispatch(loadConversation(store, channelName))
 		}
 
     return (
