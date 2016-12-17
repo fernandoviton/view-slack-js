@@ -9,10 +9,11 @@ export default class Channels extends Component {
 		const channelOnClick = (channelName) => {
 			store.dispatch(loadChannel(store.getState().achiveRootPath, channelName))
 		}
+
     return (
 			<div>
 			<ul>
-				{channels.map(function(listValue){
+				{channels.items.map(function(listValue){
             return <li key={listValue.id} onClick={() => channelOnClick(listValue.name)}>
 							{listValue.name}
 						</li>;

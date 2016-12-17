@@ -12,6 +12,7 @@ export default class MessageGroups extends Component {
 				messageGroupName))
 		}
 
+		// TODO: instead of undefined we should just always have empty at least
 		if (messageGroups === undefined)
 			return (<div/>)
 

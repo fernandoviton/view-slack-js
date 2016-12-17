@@ -6,3 +6,9 @@ state
 	-currentMessageGroup
 	-messageGroups
 	-items
+
+
+	newState
+	- channels
+		- isLoading
+		- items
