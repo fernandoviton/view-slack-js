@@ -4,17 +4,13 @@ import { loadConversation } from '../actions/index.js'
 export default class MessageGroups extends Component {
   render() {
 		const { store } = this.context
-		const { messageGroups } = store.getState().currentConversation
+		const { messageGroups } = store.getState().conversation
 		const onClick = (messageGroupName) => {
 			store.dispatch(loadConversation(
 				store.getState().achiveRootPath, 
 				store.getState().currentChannelName,
 				messageGroupName))
 		}
-
-		// TODO: instead of undefined we should just always have empty at least
-		if (messageGroups === undefined)
-			return (<div/>)
 
     return (
 			<div>

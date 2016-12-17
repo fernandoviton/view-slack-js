@@ -21,3 +21,14 @@ export const finishedLoadChannels = (channelsInfo) => ({
 	type: 'FINISHED_LOAD_CHANNEL_LIST',
 	channelsInfo
 })
+
+export const startLoadConversation = (channelName) => ({
+	type: 'START_LOAD_CONVERSATION',
+	channelName
+})
+
+// channelsInfo[i].name = name of channel
+export const finishedLoadConversation = (messageGroupNames) => ({
+	type: 'FINISHED_LOAD_CONVERSATION',
+	messageGroupNames
+})

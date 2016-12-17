@@ -1,7 +1,3 @@
-const createChannel = (channelInfo) => {
-  return { id: channelInfo.name, name: channelInfo.name }
-}
-
 export default (state = {isLoading: false, items: []}, action) => {
   switch (action.type) {
     case 'START_LOAD_CHANNEL_LIST':
@@ -15,4 +11,8 @@ export default (state = {isLoading: false, items: []}, action) => {
      default:
       return state
   }
+}
+
+const createChannel = (channelInfo) => {
+  return { id: channelInfo.name, name: channelInfo.name }
 }

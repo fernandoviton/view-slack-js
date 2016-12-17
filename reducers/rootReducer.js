@@ -1,6 +1,5 @@
 import channels from './channels'
-import currentConversation from './currentConversation'
-import messageGroups from './messageGroups'
+import conversation from './conversation'
 
 export default (state = {}, action) => {
   
@@ -8,7 +7,7 @@ export default (state = {}, action) => {
 
   state = {}
   state.channels = channels(state.channels, action)
-  state.currentConversation = currentConversation(state.currentConversation, action)
+  state.conversation = conversation(state.conversation, action)
  
   return state
 }
