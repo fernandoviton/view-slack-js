@@ -1,6 +1,6 @@
 import { defaultSlackArchivePath } from '../util/paths'
 import { makePath } from '../util/makePaths'
-import { getDailyArchiveNames } from '../util/loadArchives'
+import { getDailyArchiveNames, getMessagesFromDailyArchive } from '../util/loadArchives'
 import { startLoadChannel, finishedLoadChannel } from '../actions/index'
 
 export default (store, channelName) => {
@@ -13,7 +13,7 @@ export default (store, channelName) => {
 	{
 		currentMessageGroup = dailyArchivesNames[dailyArchivesNames.length - 1]
 		const lastDailyArchivePath = makePath(channelPath, currentMessageGroup)
-		// messages = getMessagesFromDailyArchive(lastDailyArchivePath)
+		messages = getMessagesFromDailyArchive(lastDailyArchivePath)
 	}
 	store.dispatch(finishedLoadChannel(dailyArchivesNames, currentMessageGroup, messages))
 }

@@ -30,7 +30,7 @@ export const startLoadMessages = () => ({
 })
 
 // messages[i].text = text of message
-// messages[i].id = unique id
+// messages[i].ts = unique id
 export const finishedLoadMessages = (messages) => ({
 	type: 'FINISHED_LOAD_MESSAGES',
 	messages

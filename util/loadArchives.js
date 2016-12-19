@@ -6,6 +6,10 @@ export const getDailyArchiveNames = (channelArchivePath) => {
 		.filter((filename, _, __) => getExtension(filename) === "json")
 }
 
+export const getMessagesFromDailyArchive = (dailyArchivePath) => {
+	return JSON.parse(fs.readFileSync(dailyArchivePath))
+}
+
 export const getChannelsAsJson = (rootArchivePath) => {
 	return JSON.parse(fs.readFileSync(makePath(rootArchivePath, 'channels.json')))
 }
