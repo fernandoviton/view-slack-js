@@ -3,7 +3,7 @@
 import React from 'react'
 import Channels from './channels'
 import MessageGroups from './messageGroups'
-import Conversation from './conversation'
+import Messages from './messages'
 
 export default class Root extends React.Component {
   render() {
@@ -14,7 +14,7 @@ export default class Root extends React.Component {
         <Channels/>
       </div>
       <div>
-        <Conversation/>
+        <Messages/>
       </div>
     </div>
   }

@@ -1,3 +1,3 @@
-export const makePath = (a, b) => {
-	return a + '/' + b
+export const makePath = (a, b, c = '') => {
+	return a + '/' + b + (c.length > 0 ? ('/' + c) : '')
 }

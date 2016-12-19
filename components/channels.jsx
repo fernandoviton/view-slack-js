@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import loadConversation from '../middleware/loadConversation'
+import loadChannel from '../middleware/loadChannel'
 
 
 export default class Channels extends Component {
@@ -7,15 +7,15 @@ export default class Channels extends Component {
 		const { store } = this.context;
 		const { channels } = store.getState()
 		const channelOnClick = (channelName) => {
-			loadConversation(store, channelName)
+			loadChannel(store, channelName)
 		}
 
     return (
 			<div>
 			<ul>
-				{channels.items.map(function(listValue){
-            return <li key={listValue.id} onClick={() => channelOnClick(listValue.name)}>
-							{listValue.name}
+				{channels.items.map((channel) => {
+            return <li key={channel.id} onClick={() => channelOnClick(channel.name)}>
+							{channel.name}
 						</li>;
           })}
 			</ul>

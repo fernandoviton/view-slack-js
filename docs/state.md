@@ -1,18 +1,16 @@
 state
-|
--channels
--currentConversation
-	-currentChannel
-	-currentMessageGroup
-	-messageGroups
-	-items
-
-
-	newState
-	- channels
+- channels
+	- isLoading
+	- items[]
+- channel
+	- isLoading
+	- channelName
+	- messageGroups[]
+		- id
+		- name
+	- currentMessageGroupName
+	- messages
 		- isLoading
-		- items
-	- conversation
-		- isLoading
-		- channelName
-		- messageGroups
+		- items[]
+			- id
+			- text
