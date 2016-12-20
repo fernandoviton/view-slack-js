@@ -1,34 +1,42 @@
 import { getDailyArchiveNames } from '../util/loadArchives'
 
-export const loadChannel = (rootArchivePath, channelName, getMessageGroupNames = getDailyArchiveNames) => ({
-	type: 'LOAD_CHANNEL_FROM_ARCHIVE',
-	rootArchivePath,
-	channelName,
-	getMessageGroupNames
-})
-
-export const loadConversation = (rootPath, channelName, dailyFilename) => ({
-	type: 'LOAD_CONVERSATION_FROM_DAILY_ARCHIVE',
-	path: rootPath + channelName + '/' + dailyFilename
-})
-
 export const startLoadChannels = () => ({
-	type: 'START_LOAD_CHANNEL_LIST',
+	type: 'START_LOAD_CHANNELS',
 })
 
 // channelsInfo[i].name = name of channel
+// channelsInfo[i].id = unique id
 export const finishedLoadChannels = (channelsInfo) => ({
-	type: 'FINISHED_LOAD_CHANNEL_LIST',
+	type: 'FINISHED_LOAD_CHANNELS',
 	channelsInfo
 })
 
-export const startLoadConversation = (channelName) => ({
-	type: 'START_LOAD_CONVERSATION',
+export const setActiveChannel = (channelName) => ({
+	type: 'SET_ACTIVE_CHANNEL',
 	channelName
 })
 
-// channelsInfo[i].name = name of channel
-export const finishedLoadConversation = (messageGroupNames) => ({
-	type: 'FINISHED_LOAD_CONVERSATION',
+export const startLoadMessageGroups = () => ({
+	type: 'START_LOAD_MESSAGE_GROUPS'
+})
+
+export const finishedLoadMessageGroups = (messageGroupNames) => ({
+	type: 'FINISHED_LOAD_MESSAGE_GROUPS',
 	messageGroupNames
+})
+
+export const setActiveMessageGroup = (messageGroupName) => ({
+	type: 'SET_ACTIVE_MESSAGE_GROUP',
+	messageGroupName
+})
+
+export const startLoadMessages = () => ({
+	type: 'START_LOAD_MESSAGES'
+})
+
+// messages[i].text = text of message
+// messages[i].ts = unique id
+export const finishedLoadMessages = (messages) => ({
+	type: 'FINISHED_LOAD_MESSAGES',
+	messages
 })

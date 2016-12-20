@@ -1,23 +1,31 @@
 import React, { Component, PropTypes } from 'react'
-import { loadConversation } from '../actions/index.js'
+import loadMessages from '../middleware/loadMessages'
+import Select from 'react-select'
 
 export default class MessageGroups extends Component {
   render() {
 		const { store } = this.context
-		const { messageGroups, channelName } = store.getState().conversation
-		const onClick = (messageGroupName) => {
-			store.dispatch(loadConversation(store, channelName))
+		const { messageGroups } = store.getState()
+		const onChange = (selectedOption) => {
+			loadMessages(store, selectedOption.value)
 		}
+
+		const options=messageGroups.items.map(
+			(messageGroup) => ({
+					value: messageGroup.name,
+					label: messageGroup.name,
+					clearableValue: false
+				}))
 
     return (
 			<div>
-			<ul>
-				{messageGroups.map(function(messageGroup){
-            return <li key={messageGroup.id} onClick={() => onClick(messageGroup.name)}>
-							{messageGroup.name}
-						</li>;
-          })}
-			</ul>
+			<Select
+				clearable={false}
+				name="messageGroups"
+				value={messageGroups.activeMessageGroupName}
+				onChange={onChange}
+				options={options}
+				placeholder=''/>
 			</div>
       );
   }

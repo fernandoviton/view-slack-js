@@ -1,26 +1,33 @@
 import React, { Component, PropTypes } from 'react'
-import loadConversation from '../middleware/loadConversation'
-
+import Select from 'react-select'
+import loadChannel from '../middleware/loadChannel'
 
 export default class Channels extends Component {
   render() {
 		const { store } = this.context;
 		const { channels } = store.getState()
-		const channelOnClick = (channelName) => {
-			loadConversation(store, channelName)
+		const onChange = (selectedOption) => {
+			loadChannel(store, selectedOption.value)
 		}
+
+		const options=channels.items.map(
+			(channel) => ({
+					value: channel.name,
+					label: channel.name,
+					clearableValue: false
+				}))
 
     return (
 			<div>
-			<ul>
-				{channels.items.map(function(listValue){
-            return <li key={listValue.id} onClick={() => channelOnClick(listValue.name)}>
-							{listValue.name}
-						</li>;
-          })}
-			</ul>
+			<Select
+				clearable={false}
+				name="channels"
+				value={channels.activeChannelName}
+				onChange={onChange}
+				options={options}
+				placeholder='Select a Channel'/>
 			</div>
-      );
+      )
   }
 }
 Channels.contextTypes = {
