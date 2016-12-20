@@ -1,19 +1,19 @@
 import { defaultSlackArchivePath } from '../util/paths'
 import { makePath } from '../util/makePaths'
-import { getDailyArchiveNames, getMessagesFromDailyArchive } from '../util/loadArchives'
-import { startLoadChannel, finishedLoadChannel } from '../actions/index'
+import { getDailyArchiveNames } from '../util/loadArchives'
+import loadMessages from './loadMessages'
+import { startLoadMessageGroups, finishedLoadMessageGroups, startLoadMessages, setActiveChannel } from '../actions/index'
+
+const getLastOrEmpty = (arrayOfStrings) => {
+	return arrayOfStrings.length === 0 ? '' : arrayOfStrings[arrayOfStrings.length - 1]
+}
 
 export default (store, channelName) => {
+	store.dispatch(setActiveChannel(channelName))
+	store.dispatch(startLoadMessageGroups())
+	store.dispatch(startLoadMessages())
 	const channelPath = makePath(defaultSlackArchivePath, channelName)
-	store.dispatch(startLoadChannel(channelName))
 	const dailyArchivesNames = getDailyArchiveNames(channelPath)
-	let messages = []
-	let currentMessageGroup = undefined
-	if (dailyArchivesNames.length > 0)
-	{
-		currentMessageGroup = dailyArchivesNames[dailyArchivesNames.length - 1]
-		const lastDailyArchivePath = makePath(channelPath, currentMessageGroup)
-		messages = getMessagesFromDailyArchive(lastDailyArchivePath)
-	}
-	store.dispatch(finishedLoadChannel(dailyArchivesNames, currentMessageGroup, messages))
+	store.dispatch(finishedLoadMessageGroups(dailyArchivesNames))
+	loadMessages(store, getLastOrEmpty(dailyArchivesNames))
 }

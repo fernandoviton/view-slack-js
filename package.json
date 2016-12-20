@@ -15,9 +15,11 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.6",
+    "react-select": "^1.0.0-rc.2",
     "redux": "^3.6.0"
   },
   "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "electron": "^1.4.3",
     "jest-cli": "^18.0.0"
   }

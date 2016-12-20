@@ -1,16 +1,22 @@
 state
 - channels
 	- isLoading
+	- activeChannelName
 	- items[]
-- channel
+- messageGroups
 	- isLoading
-	- channelName
-	- messageGroups[]
+	- activeMessageGroupName
+	- items[]
+- messages
+	- isLoading
+	- items[]
 		- id
-		- name
-	- currentMessageGroupName
-	- messages
-		- isLoading
-		- items[]
-			- id
-			- text
+		- text
+
+data flow
+1. load channels
+2. set active channel
+3. load message groups
+4. set active message group
+5. load messages
+6. set messages

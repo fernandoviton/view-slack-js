@@ -4,12 +4,12 @@ import MessageGroups from './messageGroups'
 export default class Messages extends Component {
 	render() {
     const { store } = this.context;
-    const { messages } = store.getState().channel;
+    const { items } = store.getState().messages;
     return (
       <div>
         <MessageGroups/>
         <ul>
-          {messages.map((message) => {
+          {items.map((message) => {
               return <li key={message.id}>
                 {message.text}
               </li>;

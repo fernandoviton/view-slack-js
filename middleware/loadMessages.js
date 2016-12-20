@@ -1,10 +1,20 @@
+import { defaultSlackArchivePath } from '../util/paths'
+import { makePath } from '../util/makePaths'
+import { getMessagesFromDailyArchive } from '../util/loadArchives'
+import { startLoadMessages, finishedLoadMessages, setActiveMessageGroup } from '../actions/index'
+
 export default (store, messageGroupName) => {
-	const channelName = store.getState().channel.channelName
-	const channelPath = makePath(defaultSlackArchivePath, channelName)
+	store.dispatch(setActiveMessageGroup(messageGroupName))
 	store.dispatch(startLoadMessages())
-	const dailyArchivesNames = getDailyArchiveNames(channelPath)
-	const currentDailyArchivePath = makePath(channelPath, messageGroupName)
-	const messages = getMessagesFromDailyArchive(lastDailyArchivePath)
-	// TODO: need to update currentMessaeGroupName too
-	store.dispatch(finishedLoadMessages(messages))
+	if (messageGroupName === '')
+	{
+		store.dispatch(finishedLoadMessages(['']))
+	}
+	else
+	{
+		const channelPath = makePath(defaultSlackArchivePath, store.getState().channels.activeChannelName)
+		const currentDailyArchivePath = makePath(channelPath, messageGroupName)
+		const messages = getMessagesFromDailyArchive(currentDailyArchivePath)
+		store.dispatch(finishedLoadMessages(messages))
+	}
 }
