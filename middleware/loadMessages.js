@@ -5,16 +5,16 @@ import { startLoadMessages, finishedLoadMessages, setActiveMessageGroup } from '
 
 export default (store, messageGroupName) => {
 	store.dispatch(setActiveMessageGroup(messageGroupName))
-	store.dispatch(startLoadMessages())
+	store.dispatch(startLoadMessages(messageGroupName))
 	if (messageGroupName === '')
 	{
-		store.dispatch(finishedLoadMessages(['']))
+		store.dispatch(finishedLoadMessages(messageGroupName, ['']))
 	}
 	else
 	{
 		const channelPath = makePath(defaultSlackArchivePath, store.getState().channels.activeChannelName)
 		const currentDailyArchivePath = makePath(channelPath, messageGroupName)
 		const messages = getMessagesFromDailyArchive(currentDailyArchivePath)
-		store.dispatch(finishedLoadMessages(messages))
+		store.dispatch(finishedLoadMessages(messageGroupName, messages))
 	}
 }

@@ -30,13 +30,15 @@ export const setActiveMessageGroup = (messageGroupName) => ({
 	messageGroupName
 })
 
-export const startLoadMessages = () => ({
-	type: 'START_LOAD_MESSAGES'
+export const startLoadMessages = (messageGroupName) => ({
+	type: 'START_LOAD_MESSAGES',
+	messageGroupName
 })
 
 // messages[i].text = text of message
 // messages[i].ts = unique id
-export const finishedLoadMessages = (messages) => ({
+export const finishedLoadMessages = (messageGroupName, messages) => ({
 	type: 'FINISHED_LOAD_MESSAGES',
+	messageGroupName,
 	messages
 })
