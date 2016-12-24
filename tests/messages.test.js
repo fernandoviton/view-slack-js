@@ -14,12 +14,12 @@ test('start load messages empties items', () => {
 })
 
 test('finished load messages sets isLoading to false', () => {
-	expect(messages(undefined, finishedLoadMessages(['anything'])).isLoading).toEqual(false)
+	expect(messages(undefined, finishedLoadMessages('group', ['anything'])).isLoading).toEqual(false)
 })
 
 test('finished load messages sets items', () => {
 	const messageItems = [{ts: 'a', text: 'aText'}, {ts: 'b', text: 'bText'}]
 	const messageItemsExpected = [{id: 'a', text: 'aText'}, {id: 'b', text: 'bText'}]
-	expect(messages({items: ['something']}, finishedLoadMessages(messageItems)).items)
+	expect(messages({items: ['something']}, finishedLoadMessages('group', messageItems)).items)
 		.toEqual(messageItemsExpected)
 })

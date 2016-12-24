@@ -8,7 +8,6 @@ export default (state = {}, action) => {
 
   state.channels = channels(state.channels, action)
   state.messageGroups = messageGroups(state.messageGroups, action)
-  state.messages = messages(state.messages, action)
  
   return state
 }

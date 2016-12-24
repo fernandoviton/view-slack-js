@@ -1,4 +1,4 @@
-import { startLoadMessageGroups, finishedLoadMessageGroups, setActiveMessageGroup } from '../actions/index.js'
+import { startLoadMessageGroups, finishedLoadMessageGroups, setActiveMessageGroup, startLoadMessages, finishedLoadMessages } from '../actions/index.js'
 import messageGroups from '../reducers/messageGroups'
 
 test('default messageGroups state', () => {
@@ -31,12 +31,51 @@ test('finished load messageGroups sets active messageGroups name to undefined', 
 		.toEqual(undefined)
 })
 
-test('finished load messageGroups sets items', () => {
+test('finished load messageGroups sets items with name and empty messages', () => {
 	expect(messageGroups(undefined, finishedLoadMessageGroups(['a', 'b'])).items)
-		.toEqual([{id: 'a', name: 'a'}, {id: 'b', name: 'b'}])
+		.toEqual([{name: 'a', messages: createEmptyMessages()}, {name:'b', messages: createEmptyMessages()}])
 })
 
 test('set active messageGroup sets', () => {
 	expect(messageGroups(undefined, setActiveMessageGroup('theGroup')).activeMessageGroupName)
 		.toEqual('theGroup')
 })
+
+test('start load messages when no items is no-op', () => {
+	expect(messageGroups({items:[]}, startLoadMessages('a')))
+		.toEqual({items:[]})
+})
+
+test('start load messages when item is not present is no-op', () => {
+	expect(messageGroups({items:[{name: 'b'}]}, startLoadMessages('a')))
+		.toEqual({items:[{name: 'b'}]})
+})
+
+test('start load messages of "a" will sets isLoading of "a"', () => {
+	expect(messageGroups({items:[{name: 'a'}, {name: 'b'}]}, startLoadMessages('a')).items)
+		.toEqual([{name: 'a', messages: {isLoading: true, items: []}}, {name: 'b'}])
+})
+
+test('finished load messages when no items is no-op', () => {
+	expect(messageGroups({items:[]}, finishedLoadMessages('a', ['anything'])))
+		.toEqual({items:[]})
+})
+
+test('finished load messages when item is not present is no-op', () => {
+	expect(messageGroups({items:[{name: 'b'}]}, finishedLoadMessages('a', ['anything'])))
+		.toEqual({items:[{name: 'b'}]})
+})
+
+test('finished load messages of "a" will sets fields of "a"', () => {
+	const messageItems = [{ts: 'a', text: 'aText'}, {ts: 'b', text: 'bText'}]
+	const messageItemsExpected = {isLoading: false, items: [{id: 'a', text: 'aText'}, {id: 'b', text: 'bText'}]}
+	expect(messageGroups({items:[{name: 'a'}, {name: 'b'}]}, finishedLoadMessages('a', messageItems)).items)
+		.toEqual([{name: 'a', messages: messageItemsExpected}, {name: 'b'}])
+})
+
+const createEmptyMessages = () => {
+	return {
+		isLoading: false,
+		items: []
+	}
+}

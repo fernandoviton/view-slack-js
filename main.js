@@ -10,7 +10,6 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-  console.log(path)
   mainWindow = new BrowserWindow({width: 800, height: 600, globals: {id: 17}});
   mainWindow.loadURL('file://' + __dirname + '/index.html');
   mainWindow.on('closed', () => {
