@@ -16,7 +16,10 @@ const htmlItemsFromMessageGroup = (messageGroup) => {
 }
 
 const htmlMessageGroupHeader = (date) => {
-  return <p><font color="red">{date}</font></p>
+  return <p 
+    style={{fontSize:30}}>
+    <font color="red">{date}</font>
+  </p>
 }
 
 const htmlLoadMoreButton = (label, onClick) => {
@@ -46,7 +49,7 @@ export default class Messages extends Component {
       })
 
     return (
-      <div>
+      <div style = {{fontFamily: "Helvetica,sans-serif"}}>
         <ul>
           {htmlShowEarlierButton}
           {items.map((messageGroup) => {
