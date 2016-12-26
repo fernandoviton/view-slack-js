@@ -1,4 +1,8 @@
-import { remote } from 'electron'
+export const makePath = (a, b, c = '') => {
+	return a + '/' + b + (c.length > 0 ? ('/' + c) : '')
+}
 
-const documentsPath = remote.app.getPath('documents')
-export const defaultSlackArchivePath = documentsPath + '/slackexported/'
+export const stripExtension = (path) => {
+	const lastIndex = path.lastIndexOf('.')
+	return lastIndex >= 0 ? path.substr(0, lastIndex) : path
+}

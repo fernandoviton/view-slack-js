@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import MessageGroups from './messageGroups'
 import loadMessages from '../middleware/loadMessages'
-import {findIndexReverse} from '../util/array'
+import { findIndexReverse } from '../util/array'
+import { stripExtension } from '../util/paths'
 
 const getDisplayUserName = (users, userId) => {
   const user = users[userId]
@@ -61,7 +62,7 @@ export default class Messages extends Component {
           {items.map((messageGroup) => {
             return messageGroup.messages.items.length == 0 
               ? []
-              : [htmlMessageGroupHeader(messageGroup.name), htmlItemsFromMessageGroup(messageGroup, users)]
+              : [htmlMessageGroupHeader(stripExtension(messageGroup.name)), htmlItemsFromMessageGroup(messageGroup, users)]
           })}
           {htmlShowLaterButton}
         </ul>

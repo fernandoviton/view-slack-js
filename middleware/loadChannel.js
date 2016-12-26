@@ -1,5 +1,5 @@
-import { defaultSlackArchivePath } from '../util/paths'
-import { makePath } from '../util/makePaths'
+import { defaultSlackArchivePath } from '../util/globalPaths'
+import { makePath } from '../util/paths'
 import { getDailyArchiveNames } from '../util/loadArchives'
 import loadMessages from './loadMessages'
 import { startLoadMessageGroups, finishedLoadMessageGroups, startLoadMessages, setActiveChannel } from '../actions/index'
