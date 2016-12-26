@@ -15,7 +15,7 @@ const getDisplayUserName = (users, userId) => {
   return user === undefined ? "???" : user.name
 }
 
-const htmlItemFromMessage = (message) => {
+const htmlItemFromMessage = (message, users) => {
   return <li key={message.id} style = {itemStyle}>
                   {getDisplayUserName(users, message.user) + ': ' + message.text}
                 </li>;
