@@ -1,5 +1,3 @@
-import { getDailyArchiveNames } from '../util/loadArchives'
-
 export const startLoadChannels = () => ({
 	type: 'START_LOAD_CHANNELS',
 })
@@ -41,4 +39,15 @@ export const finishedLoadMessages = (messageGroupName, messages) => ({
 	type: 'FINISHED_LOAD_MESSAGES',
 	messageGroupName,
 	messages
+})
+
+export const startLoadUsers = () => ({
+	type: 'START_LOAD_USERS',
+})
+
+// usersInfo[i].name = display name
+// usersInfo[i].id = user id used in messages
+export const finishedLoadUsers = (usersInfo) => ({
+	type: 'FINISHED_LOAD_USERS',
+	usersInfo
 })
