@@ -5,6 +5,7 @@ import rootReducer from './reducers/rootReducer';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import loadChannels from './middleware/loadChannels'
+import loadUsers from './middleware/loadUsers'
 import { defaultSlackArchivePath } from './util/paths'
 
 const store = createStore(rootReducer);
@@ -20,5 +21,6 @@ store.subscribe(render)
 window.onload = function() 
 {
   render()
+  loadUsers(store, defaultSlackArchivePath)
   loadChannels(store, defaultSlackArchivePath)
 }

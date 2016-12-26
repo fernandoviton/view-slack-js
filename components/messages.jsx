@@ -3,15 +3,20 @@ import MessageGroups from './messageGroups'
 import loadMessages from '../middleware/loadMessages'
 import {findIndexReverse} from '../util/array'
 
-const htmlItemFromMessage = (message) => {
+const getDisplayUserName = (users, userId) => {
+  const user = users[userId]
+  return user === undefined ? "???" : user.name
+}
+
+const htmlItemFromMessage = (message, users) => {
   return <li key={message.id}>
-                  {message.text}
+                  {getDisplayUserName(users, message.user) + ': ' + message.text}
                 </li>;
 }
 
-const htmlItemsFromMessageGroup = (messageGroup) => {
+const htmlItemsFromMessageGroup = (messageGroup, users) => {
   return messageGroup.messages.items.map((message) => {
-    return htmlItemFromMessage(message)
+    return htmlItemFromMessage(message, users)
   })
 }
 
@@ -30,6 +35,7 @@ export default class Messages extends Component {
 	render() {
     const { store } = this.context;
     const { items } = store.getState().messageGroups;
+    const  users = store.getState().users.items;
 
     const indexOfFirstLoadedMessageGroup = items.findIndex((messageGroup) => {
       return messageGroup.messages.items.length > 0
@@ -55,7 +61,7 @@ export default class Messages extends Component {
           {items.map((messageGroup) => {
             return messageGroup.messages.items.length == 0 
               ? []
-              : [htmlMessageGroupHeader(messageGroup.name), htmlItemsFromMessageGroup(messageGroup)]
+              : [htmlMessageGroupHeader(messageGroup.name), htmlItemsFromMessageGroup(messageGroup, users)]
           })}
           {htmlShowLaterButton}
         </ul>

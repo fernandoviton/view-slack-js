@@ -14,7 +14,7 @@ export default (
 		case 'FINISHED_LOAD_MESSAGES':
 			return {
 				isLoading: false,
-				items: action.messages.map((message) => ({id: message.ts, text: message.text}))
+				items: action.messages.map((message) => ({id: message.ts, text: message.text, user: message.user}))
 			}
     default:
       return state

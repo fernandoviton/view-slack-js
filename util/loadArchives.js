@@ -14,6 +14,9 @@ export const getChannelsAsJson = (rootArchivePath) => {
 	return JSON.parse(fs.readFileSync(makePath(rootArchivePath, 'channels.json')))
 }
 
+export const getUsersAsJson = (rootArchivePath) => {
+	return JSON.parse(fs.readFileSync(makePath(rootArchivePath, 'users.json')))
+}
 
 const getExtension = (filename) => {
 	const afterDot = filename.substr(filename.lastIndexOf('.') + 1)
