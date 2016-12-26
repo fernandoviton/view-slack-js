@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { makePath } from './makePaths'
+import { makePath } from './paths'
 
 export const getDailyArchiveNames = (channelArchivePath) => {
 	return fs.readdirSync(channelArchivePath)

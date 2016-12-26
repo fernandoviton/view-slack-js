@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import MessageGroups from './messageGroups'
 import loadMessages from '../middleware/loadMessages'
-import {findIndexReverse} from '../util/array'
+import { findIndexReverse } from '../util/array'
+import { stripExtension } from '../util/paths'
 
 const getDisplayUserName = (users, userId) => {
   const user = users[userId]
@@ -61,7 +62,7 @@ export default class Messages extends Component {
           {items.map((messageGroup) => {
             return messageGroup.messages.items.length == 0 
               ? []
-              : [htmlMessageGroupHeader(messageGroup.name), htmlItemsFromMessageGroup(messageGroup, users)]
+              : [htmlMessageGroupHeader(getDisplayStringFromMessageGroupName(messageGroup.name)), htmlItemsFromMessageGroup(messageGroup, users)]
           })}
           {htmlShowLaterButton}
         </ul>
@@ -71,4 +72,10 @@ export default class Messages extends Component {
 }
 Messages.contextTypes = {
   store: React.PropTypes.object
+}
+
+const getDisplayStringFromMessageGroupName = (filename) => {
+  // the filename is in UTC which is probably not useful to present to the user.  Local time 
+  // might be but then we have to remap messages appropriately too
+  return stripExtension(filename)
 }

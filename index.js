@@ -6,7 +6,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import loadChannels from './middleware/loadChannels'
 import loadUsers from './middleware/loadUsers'
-import { defaultSlackArchivePath } from './util/paths'
+import { defaultSlackArchivePath } from './util/globalPaths'
 
 const store = createStore(rootReducer);
 console.log('created store', store.getState())
