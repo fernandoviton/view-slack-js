@@ -4,13 +4,19 @@ import loadMessages from '../middleware/loadMessages'
 import { findIndexReverse } from '../util/array'
 import { stripExtension } from '../util/paths'
 
+const buttonStyle = {textAlignment:"center", backgroundColor:"#4C9689", color:"white", fontSize:14, padding:10, borderRadius:5, border:"none", fontFamily: "Tahoma, Verdana, Segoe, sans-serif"}
+
+const listStyle = {listStyle:"none", padding:10}
+
+const itemStyle = {padding:10, borderWidth:.1, borderRadius:.1, borderColor:"#dddddd"}
+
 const getDisplayUserName = (users, userId) => {
   const user = users[userId]
   return user === undefined ? "???" : user.name
 }
 
-const htmlItemFromMessage = (message, users) => {
-  return <li key={message.id}>
+const htmlItemFromMessage = (message) => {
+  return <li key={message.id} style = {itemStyle}>
                   {getDisplayUserName(users, message.user) + ': ' + message.text}
                 </li>;
 }
@@ -23,13 +29,13 @@ const htmlItemsFromMessageGroup = (messageGroup, users) => {
 
 const htmlMessageGroupHeader = (date) => {
   return <p 
-    style={{fontSize:30}}>
-    <font color="red">{date}</font>
+    style={{fontSize:30, color:"#4C9689", fontWeight:"bold"}}>
+    {date}
   </p>
 }
 
 const htmlLoadMoreButton = (label, onClick) => {
-  return <button onClick={onClick}>{label}</button>
+  return <button style = {buttonStyle} onClick={onClick}>{label}</button>
 }
 
 export default class Messages extends Component {
@@ -46,18 +52,18 @@ export default class Messages extends Component {
     })
     const htmlShowEarlierButton = indexOfFirstLoadedMessageGroup <= 0
       ? []
-      : htmlLoadMoreButton('load previous conversation', () => {
+      : htmlLoadMoreButton('Load previous conversation', () => {
         loadMessages(store, items[indexOfFirstLoadedMessageGroup-1].name)
       })
     const htmlShowLaterButton = indexOfLastLoadedMessageGroup >= items.length - 1
       ? []
-      : htmlLoadMoreButton('load next conversation', () => {
+      : htmlLoadMoreButton('Load next conversation', () => {
         loadMessages(store, items[indexOfLastLoadedMessageGroup+1].name)
       })
 
     return (
-      <div style = {{fontFamily: "Helvetica,sans-serif"}}>
-        <ul>
+      <div style = {{fontFamily: "Tahoma, Verdana, Segoe, sans-serif"}}>
+        <ul style = {listStyle}>
           {htmlShowEarlierButton}
           {items.map((messageGroup) => {
             return messageGroup.messages.items.length == 0 

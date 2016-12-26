@@ -18,7 +18,7 @@ export default class Channels extends Component {
 				}))
 
     return (
-			<div>
+			<div style = {{fontFamily: "Tahoma, Verdana, Segoe, sans-serif"}}>
 			<Select
 				clearable={false}
 				name="channels"
