@@ -3,10 +3,13 @@ export default (state = {isLoading: false, items: []}, action) => {
     case 'START_LOAD_USERS':
       return { isLoading: true, items: [] }
      case 'FINISHED_LOAD_USERS':
+      const userMap = action.usersInfo.reduce((map, userInfo) => {
+        map[userInfo.id] = createUser(userInfo)
+        return map
+        }, new Map())
       return { 
         isLoading: false,
-        items: action.usersInfo
-          .map((userInfo) => createUser(userInfo))
+        items: userMap
         }
      default:
       return state
@@ -14,5 +17,5 @@ export default (state = {isLoading: false, items: []}, action) => {
 }
 
 const createUser = (userInfo) => {
-  return { id: userInfo.id, name: userInfo.name }
+  return { name: userInfo.name }
 }

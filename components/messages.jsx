@@ -4,7 +4,7 @@ import loadMessages from '../middleware/loadMessages'
 import {findIndexReverse} from '../util/array'
 
 const getDisplayUserName = (users, userId) => {
-  const user = users.find((user) => { return user.id == userId })
+  const user = users[userId]
   return user === undefined ? "???" : user.name
 }
 
