@@ -1,5 +1,3 @@
-Initially copied from https://github.com/b52/electron-es6-react
-
 # view-slack-js
 
 A client app that can read a local exported slack archive
@@ -43,6 +41,7 @@ electron-packager . -all
 ```
 
 ## Dep
+- Initially copied from https://github.com/b52/electron-es6-react
 - [ES6](http://exploringjs.com/)
 - [React](https://facebook.github.io/react/)
 - [Redux](http://redux.js.org/)
