@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.3.13",
@@ -19,7 +20,6 @@
     "redux": "^3.6.0"
   },
   "devDependencies": {
-    "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "electron": "^1.4.3",
     "jest-cli": "^18.0.0"
   }
