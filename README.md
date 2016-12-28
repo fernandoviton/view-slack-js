@@ -43,10 +43,10 @@ electron-packager . -all
 ```
 
 ## Dep
-[ES6](http://exploringjs.com/)
-[React](https://facebook.github.io/react/)
-[Redux](http://redux.js.org/)
-[Electron](http://electron.atom.io/)
-[Babel](http://babeljs.io)
-[Jest](https://facebook.github.io/jest/)
-[Electron-Packager](https://github.com/electron-userland/electron-packager)
+- [ES6](http://exploringjs.com/)
+- [React](https://facebook.github.io/react/)
+- [Redux](http://redux.js.org/)
+- [Electron](http://electron.atom.io/)
+- [Babel](http://babeljs.io)
+- [Jest](https://facebook.github.io/jest/)
+- [Electron-Packager](https://github.com/electron-userland/electron-packager)
