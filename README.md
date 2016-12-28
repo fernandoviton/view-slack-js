@@ -12,10 +12,10 @@ Visualization and features are still very limited
 
 ## Future
 
-[] Support Search
-[] Nicer html styling
-[] Visualization of more of the slack data
-[] View of attached file support
+- Support Search
+- Nicer html styling
+- Visualization of more of the slack data
+- View of attached file support
 
 ## Implementation Details?
 
@@ -36,9 +36,17 @@ npm install
 npm start
 ```
 
-[ES6]: http://exploringjs.com/
-[React]: https://facebook.github.io/react/
-[Redux]: http://redux.js.org/
-[Electron]: http://electron.atom.io/
-[Babel]: http://babeljs.io
-[Jest]: https://facebook.github.io/jest/
+## Deployment
+
+```bash
+electron-packager . -all
+```
+
+## Dep
+[ES6](http://exploringjs.com/)
+[React](https://facebook.github.io/react/)
+[Redux](http://redux.js.org/)
+[Electron](http://electron.atom.io/)
+[Babel](http://babeljs.io)
+[Jest](https://facebook.github.io/jest/)
+[Electron-Packager](https://github.com/electron-userland/electron-packager)
