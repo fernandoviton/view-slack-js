@@ -4,7 +4,6 @@ export default (
 	state = 
 	{
 		isLoading: false, 
-		activeMessageGroupName: undefined,
 		items: [],
 	}, 
 	action) => {
@@ -12,17 +11,13 @@ export default (
 		case 'START_LOAD_MESSAGE_GROUPS':
 			return { 
 				isLoading: true,
-				activeMessageGroupName: undefined,
 				items: [],
 			}
 		case 'FINISHED_LOAD_MESSAGE_GROUPS':
 			return {
 				isLoading: false,
-				activeMessageGroupName: undefined,
 				items: action.messageGroupNames.map((name) => createMessageGroup(name)),
 			}
-		case 'SET_ACTIVE_MESSAGE_GROUP':
-      return {...state, activeMessageGroupName: action.messageGroupName }
 		case 'START_LOAD_MESSAGES':
 		case 'FINISHED_LOAD_MESSAGES':
 			return {...state, items: state.items.map((item) => item.name == action.messageGroupName 

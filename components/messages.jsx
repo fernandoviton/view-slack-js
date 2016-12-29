@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import MessageGroups from './messageGroups'
 import loadMessages from '../middleware/loadMessages'
 import { findIndexReverse } from '../util/array'
 import { stripExtension } from '../util/paths'
@@ -11,7 +10,7 @@ const listStyle = {listStyle:"none", padding:10}
 const itemStyle = {padding:10, borderWidth:.1, borderRadius:.1, borderColor:"#dddddd"}
 
 const getDisplayUserName = (users, userId) => {
-  const user = users[userId]
+  const user = users.get(userId)
   return user === undefined ? "???" : user.name
 }
 

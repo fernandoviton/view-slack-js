@@ -23,11 +23,6 @@ export const finishedLoadMessageGroups = (messageGroupNames) => ({
 	messageGroupNames
 })
 
-export const setActiveMessageGroup = (messageGroupName) => ({
-	type: 'SET_ACTIVE_MESSAGE_GROUP',
-	messageGroupName
-})
-
 export const startLoadMessages = (messageGroupName) => ({
 	type: 'START_LOAD_MESSAGES',
 	messageGroupName

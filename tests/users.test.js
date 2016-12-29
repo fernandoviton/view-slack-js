@@ -21,8 +21,11 @@ test('finished loading users sets loading state to false', () => {
 })
 
 test('finished loading users sets items', () => {
+	var a = new Map()
+	a['a'] = 1
+	a.set('a', 2)
 	const usersMap = users({items: 'something'}, finishedLoadUsers([{name: 'new', id:'a'}, {name: 'new2', id: 'b'}])).items
-	expect(usersMap['a']).toEqual({ name: 'new'})
-	expect(usersMap['b']).toEqual({ name: 'new2'})
-	expect(usersMap.entries.length).toEqual(2)
+	expect(usersMap.get('a')).toEqual({ name: 'new'})
+	expect(usersMap.get('b')).toEqual({ name: 'new2'})
+	expect(usersMap.size).toEqual(2)
 })
