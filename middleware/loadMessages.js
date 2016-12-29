@@ -3,7 +3,15 @@ import { makePath } from '../util/paths'
 import { getMessagesFromDailyArchive } from '../util/loadArchives'
 import { startLoadMessages, finishedLoadMessages, setActiveMessageGroup } from '../actions/index'
 
-export default (store, messageGroupName) => {
+export default (store, messageGroupNames) => {
+	console.log('Load messages for:', messageGroupNames)
+	for(const messageGroupName of messageGroupNames)
+	{
+		loadMessagesForGroup(store, messageGroupName)
+	}
+}
+
+export const loadMessagesForGroup = (store, messageGroupName) => {
 	store.dispatch(setActiveMessageGroup(messageGroupName))
 	store.dispatch(startLoadMessages(messageGroupName))
 	if (messageGroupName === '')

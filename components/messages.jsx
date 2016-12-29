@@ -42,7 +42,7 @@ export default class Messages extends Component {
 	render() {
     const { store } = this.context;
     const { items } = store.getState().messageGroups;
-    const  users = store.getState().users.items;
+    const users = store.getState().users.items;
 
     const indexOfFirstLoadedMessageGroup = items.findIndex((messageGroup) => {
       return messageGroup.messages.items.length > 0
@@ -50,14 +50,19 @@ export default class Messages extends Component {
     const indexOfLastLoadedMessageGroup = findIndexReverse(items, (messageGroup) => {
       return messageGroup.messages.items.length > 0
     })
+
+    const numberOfPreviousToLoad = Math.min(indexOfFirstLoadedMessageGroup, Math.max(10, indexOfFirstLoadedMessageGroup/10))
+    const numberLeftUntilEndToLoad = items.length - indexOfLastLoadedMessageGroup
+    const numberofLaterToLoad = Math.min(numberLeftUntilEndToLoad, Math.max(10, numberLeftUntilEndToLoad/10))
+
     const htmlShowEarlierButton = indexOfFirstLoadedMessageGroup <= 0
       ? []
-      : htmlLoadMoreButton('Load previous conversation', () => {
-        loadMessages(store, items[indexOfFirstLoadedMessageGroup-1].name)
+      : htmlLoadMoreButton('Load previous conversations', () => {
+        loadMessages(store, items.slice(indexOfFirstLoadedMessageGroup-numberOfPreviousToLoad, indexOfFirstLoadedMessageGroup).map((messageGroup) => messageGroup.name))
       })
     const htmlShowLaterButton = indexOfLastLoadedMessageGroup >= items.length - 1
       ? []
-      : htmlLoadMoreButton('Load next conversation', () => {
+      : htmlLoadMoreButton('Load next conversations', () => {
         loadMessages(store, items[indexOfLastLoadedMessageGroup+1].name)
       })
 

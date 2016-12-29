@@ -15,5 +15,5 @@ export default (store, channelName) => {
 	const channelPath = makePath(defaultSlackArchivePath, channelName)
 	const dailyArchivesNames = getDailyArchiveNames(channelPath)
 	store.dispatch(finishedLoadMessageGroups(dailyArchivesNames))
-	loadMessages(store, getLastOrEmpty(dailyArchivesNames))
+	loadMessages(store, [getLastOrEmpty(dailyArchivesNames)])
 }
