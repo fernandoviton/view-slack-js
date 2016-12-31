@@ -4,7 +4,7 @@ export default (state = {isLoading: false, items: []}, action) => {
       return { isLoading: true, items: [] }
      case 'FINISHED_LOAD_USERS':
       const userMap = action.usersInfo.reduce((map, userInfo) => {
-        map[userInfo.id] = createUser(userInfo)
+        map.set(userInfo.id, createUser(userInfo))
         return map
         }, new Map())
       return { 

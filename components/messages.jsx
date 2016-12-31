@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import MessageGroups from './messageGroups'
 import loadMessages from '../middleware/loadMessages'
 import { findIndexReverse } from '../util/array'
 import { stripExtension } from '../util/paths'
@@ -11,7 +10,7 @@ const listStyle = {listStyle:"none", padding:10}
 const itemStyle = {padding:10, borderWidth:.1, borderRadius:.1, borderColor:"#dddddd"}
 
 const getDisplayUserName = (users, userId) => {
-  const user = users[userId]
+  const user = users.get(userId)
   return user === undefined ? "???" : user.name
 }
 
@@ -42,7 +41,7 @@ export default class Messages extends Component {
 	render() {
     const { store } = this.context;
     const { items } = store.getState().messageGroups;
-    const  users = store.getState().users.items;
+    const users = store.getState().users.items;
 
     const indexOfFirstLoadedMessageGroup = items.findIndex((messageGroup) => {
       return messageGroup.messages.items.length > 0
@@ -50,14 +49,19 @@ export default class Messages extends Component {
     const indexOfLastLoadedMessageGroup = findIndexReverse(items, (messageGroup) => {
       return messageGroup.messages.items.length > 0
     })
+
+    const numberOfPreviousToLoad = Math.min(indexOfFirstLoadedMessageGroup, Math.max(10, indexOfFirstLoadedMessageGroup/10))
+    const numberLeftUntilEndToLoad = items.length - indexOfLastLoadedMessageGroup
+    const numberofLaterToLoad = Math.min(numberLeftUntilEndToLoad, Math.max(10, numberLeftUntilEndToLoad/10))
+
     const htmlShowEarlierButton = indexOfFirstLoadedMessageGroup <= 0
       ? []
-      : htmlLoadMoreButton('Load previous conversation', () => {
-        loadMessages(store, items[indexOfFirstLoadedMessageGroup-1].name)
+      : htmlLoadMoreButton('Load previous conversations', () => {
+        loadMessages(store, items.slice(indexOfFirstLoadedMessageGroup-numberOfPreviousToLoad, indexOfFirstLoadedMessageGroup).map((messageGroup) => messageGroup.name))
       })
     const htmlShowLaterButton = indexOfLastLoadedMessageGroup >= items.length - 1
       ? []
-      : htmlLoadMoreButton('Load next conversation', () => {
+      : htmlLoadMoreButton('Load next conversations', () => {
         loadMessages(store, items[indexOfLastLoadedMessageGroup+1].name)
       })
 

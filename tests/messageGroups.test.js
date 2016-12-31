@@ -1,11 +1,10 @@
-import { startLoadMessageGroups, finishedLoadMessageGroups, setActiveMessageGroup, startLoadMessages, finishedLoadMessages } from '../actions/index.js'
+import { startLoadMessageGroups, finishedLoadMessageGroups, startLoadMessages, finishedLoadMessages } from '../actions/index.js'
 import messageGroups from '../reducers/messageGroups'
 
 test('default messageGroups state', () => {
 	expect(messageGroups(undefined, {type: undefined}))
 		.toEqual({
 			isLoading: false, 
-			activeMessageGroupName: undefined, 
 			items: []
 		})
 })
@@ -15,7 +14,7 @@ test('start load messageGroups sets loading state to true', () => {
 })
 
 test('start load messageGroups sets active messageGroups name to undefined', () => {
-	expect(messageGroups({activeMessageGroupName: 'hi'}, startLoadMessageGroups()).messageGroups).toEqual(undefined)
+	expect(messageGroups({}, startLoadMessageGroups()).messageGroups).toEqual(undefined)
 })
 
 test('start load messageGroups empties items', () => {
@@ -27,18 +26,13 @@ test('finished load messageGroups sets loading state to false', () => {
 })
 
 test('finished load messageGroups sets active messageGroups name to undefined', () => {
-	expect(messageGroups({activeMessageGroupName: 'hi'}, finishedLoadMessageGroups(['anything'])).messageGroups)
+	expect(messageGroups({}, finishedLoadMessageGroups(['anything'])).messageGroups)
 		.toEqual(undefined)
 })
 
 test('finished load messageGroups sets items with name and empty messages', () => {
 	expect(messageGroups(undefined, finishedLoadMessageGroups(['a', 'b'])).items)
 		.toEqual([{name: 'a', messages: createEmptyMessages()}, {name:'b', messages: createEmptyMessages()}])
-})
-
-test('set active messageGroup sets', () => {
-	expect(messageGroups(undefined, setActiveMessageGroup('theGroup')).activeMessageGroupName)
-		.toEqual('theGroup')
 })
 
 test('start load messages when no items is no-op', () => {

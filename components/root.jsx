@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Channels from './channels'
-import MessageGroups from './messageGroups'
 import Messages from './messages'
 
 export default class Root extends React.Component {

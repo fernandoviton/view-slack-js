@@ -1,9 +1,9 @@
 {
-  "name": "electron-es6-react",
+  "name": "view-slack",
   "version": "0.1.0",
   "main": "bootstrapper.js",
   "license": "MIT",
-  "repository": "b52/electron-es6-react",
+  "repository": "fernandoviton/view-slack-js",
   "scripts": {
     "start": "electron .",
     "test": "jest"
