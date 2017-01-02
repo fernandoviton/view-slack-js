@@ -1,3 +1,4 @@
+import archive from './archive'
 import channels from './channels'
 import messages from './messages'
 import settings from './settings'
@@ -9,6 +10,7 @@ export default (state = {}, action) => {
   console.log('handling action:', action)
 
   state.settings = settings(state.settings, action)
+  state.archive = archive(state.archive, action)
   state.users = users(state.users, action)
   state.channels = channels(state.channels, action)
   state.messageGroups = messageGroups(state.messageGroups, action)
