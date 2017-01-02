@@ -46,3 +46,7 @@ export const finishedLoadUsers = (usersInfo) => ({
 	type: 'FINISHED_LOAD_USERS',
 	usersInfo
 })
+
+export const toggleSettingsUi = () => ({
+	type: 'TOGGLE_SETTINGS_UI'
+})

@@ -1,7 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 
 let mainWindow = null;
-let path = app.getPath('exe')
 
 app.on('window-all-closed', () => {
   if (process.platform != 'darwin') {

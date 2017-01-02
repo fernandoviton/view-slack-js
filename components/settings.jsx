@@ -1,33 +1,22 @@
 import React, { Component, PropTypes } from 'react'
 import Creatable from 'react-select'
 
-export default class Channels extends Component {
+export default class Settings extends Component {
   render() {
-		const { store } = this.context;
-		const options = []
-		const currentOption = ''
-		const onChange = (selectedOption) => {
-			console.log("onchange")
-		}
+		const { store } = this.context
+		const { settings } = store.getState()
 
     return (
 			<div>
-			<button>...</button>
-			<Creatable
-				onNewOptionClick={()=>{console.log("onNewOptionClick")}}
-				newOptionCreator={(label, labelKey, valueKey) => console.log("newOptionCreator")}
-				name="archivePath"
-				value={currentOption}
-				onChange={onChange}
-				options={options}
-				placeholder='Select an archive'/>			
+       	<input 
+				 	type="url" 
+				 	onKeyPress={(event)=>{ if (event.which === 13) console.log(event.which) }}
+					hidden={settings.hiddenUi}
+				/>
 			</div>
       )
   }
 }
-Channels.contextTypes = {
+Settings.contextTypes = {
   store: React.PropTypes.object
 }
-//Channels.propTypes = {
-//  channels: PropTypes.array.isRequired
-//}

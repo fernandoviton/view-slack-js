@@ -1,6 +1,8 @@
 ### State description
 
 state
+- settings
+	- hiddenUi
 - channels
 	- isLoading
 	- activeChannelName

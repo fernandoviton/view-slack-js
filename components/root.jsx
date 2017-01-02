@@ -1,8 +1,10 @@
 'use babel'
 
 import React from 'react'
+import Settings from './settings'
 import Channels from './channels'
 import Messages from './messages'
+import { toggleSettingsUi } from '../actions/index.js'
 
 export default class Root extends React.Component {
   render() {
@@ -10,6 +12,8 @@ export default class Root extends React.Component {
     console.log('store on Root render:', store.getState())
     return <div>
       <div>
+         <button onClick={()=>{store.dispatch(toggleSettingsUi())}}>...</button>
+         <Settings/>
         <Channels/>
       </div>
       <div>

@@ -1,5 +1,6 @@
 import channels from './channels'
 import messages from './messages'
+import settings from './settings'
 import users from './users'
 import messageGroups from './messageGroups'
 
@@ -7,6 +8,7 @@ export default (state = {}, action) => {
   
   console.log('handling action:', action)
 
+  state.settings = settings(state.settings, action)
   state.users = users(state.users, action)
   state.channels = channels(state.channels, action)
   state.messageGroups = messageGroups(state.messageGroups, action)
