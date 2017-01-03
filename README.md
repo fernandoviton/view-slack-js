@@ -49,3 +49,4 @@ electron-packager . -all
 - [Babel](http://babeljs.io)
 - [Jest](https://facebook.github.io/jest/)
 - [Electron-Packager](https://github.com/electron-userland/electron-packager)
+- React-select
