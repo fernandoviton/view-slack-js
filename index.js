@@ -23,6 +23,5 @@ window.onload = function()
 {
   render()
   loadArchive(store, defaultSlackArchivePath)
-  loadUsers(store, defaultSlackArchivePath)
-  loadChannels(store, defaultSlackArchivePath)
+    // TODO: replace this with restoring from a persisted value.  But we should also make it where even if this fails the displayed value is the persisted value
 }

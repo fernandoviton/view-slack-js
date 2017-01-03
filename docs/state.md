@@ -3,10 +3,12 @@
 state
 - settings
 	- hiddenUi
+	- loadArchiveErrorMsg
 - archive
 	- isLoading
 	- displayPath (can be different than other paths if the user is in progress of inputting path or we haven't yet loaded info from path)
 	- localPath
+- users
 - channels
 	- isLoading
 	- activeChannelName

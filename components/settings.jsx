@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react'
 import loadArchive from '../middleware/loadArchive'
 import { setArchiveDisplayPath } from '../actions/index'
 
+const divStyle = {padding:10}
 const inputStyle = {width:"100%"}
+const errorStyle = {width:"100%", fontStyle: "italic", color:"red", margin:2, padding:0}
 
 
 export default class Settings extends Component {
@@ -12,7 +14,7 @@ export default class Settings extends Component {
 		const { archive } = store.getState()
 
     return (
-			<div>
+			<div hidden={settings.hiddenUi} style={divStyle}>
        	<input 
 				 	type="url"
 					style={inputStyle}
@@ -20,9 +22,10 @@ export default class Settings extends Component {
 					onChange={(event)=>{store.dispatch(setArchiveDisplayPath(event.target.value))}}
 				 	onKeyPress={(event)=>{ if (event.which === 13) loadArchive(store, event.target.value) }}
 					onBlur={(event)=>{loadArchive(store, event.target.value)}}
-					hidden={settings.hiddenUi}
-				>
-				</input>
+				/>
+				<p hidden={settings.loadArchiveErrorMsg === undefined} style={errorStyle}>
+					{settings.loadArchiveErrorMsg}
+				</p>
 			</div>
       )
   }

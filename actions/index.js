@@ -67,3 +67,8 @@ export const finishedLoadUsers = (usersInfo) => ({
 export const toggleSettingsUi = () => ({
 	type: 'TOGGLE_SETTINGS_UI'
 })
+
+export const setLoadErrorInSettings = (msg) => ({
+	type: 'SET_ARCHIVE_LOAD_ERROR_IN_SETTINGS',
+	msg
+})
