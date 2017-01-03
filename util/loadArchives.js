@@ -10,6 +10,10 @@ export const getMessagesFromDailyArchive = (dailyArchivePath) => {
 	return JSON.parse(fs.readFileSync(dailyArchivePath))
 }
 
+export const doesArchiveExist = (path) => {
+	return fs.existsSync(makePath(path, 'users.json'))
+}
+
 export const getChannelsAsJson = (rootArchivePath) => {
 	return JSON.parse(fs.readFileSync(makePath(rootArchivePath, 'channels.json')))
 }

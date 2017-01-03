@@ -1,33 +1,35 @@
 import React, { Component, PropTypes } from 'react'
-import Creatable from 'react-select'
+import loadArchive from '../middleware/loadArchive'
+import { setArchiveDisplayPath } from '../actions/index'
 
-export default class Channels extends Component {
+const divStyle = {padding:10}
+const inputStyle = {width:"100%"}
+const errorStyle = {width:"100%", fontStyle: "italic", color:"red", margin:2, padding:0}
+
+
+export default class Settings extends Component {
   render() {
-		const { store } = this.context;
-		const options = []
-		const currentOption = ''
-		const onChange = (selectedOption) => {
-			console.log("onchange")
-		}
+		const { store } = this.context
+		const { settings } = store.getState()
+		const { archive } = store.getState()
 
     return (
-			<div>
-			<button>...</button>
-			<Creatable
-				onNewOptionClick={()=>{console.log("onNewOptionClick")}}
-				newOptionCreator={(label, labelKey, valueKey) => console.log("newOptionCreator")}
-				name="archivePath"
-				value={currentOption}
-				onChange={onChange}
-				options={options}
-				placeholder='Select an archive'/>			
+			<div hidden={settings.hiddenUi} style={divStyle}>
+       	<input 
+				 	type="url"
+					style={inputStyle}
+					value={archive.displayPath}
+					onChange={(event)=>{store.dispatch(setArchiveDisplayPath(event.target.value))}}
+				 	onKeyPress={(event)=>{ if (event.which === 13) loadArchive(store, event.target.value) }}
+					onBlur={(event)=>{loadArchive(store, event.target.value)}}
+				/>
+				<p hidden={settings.loadArchiveErrorMsg === undefined} style={errorStyle}>
+					{settings.loadArchiveErrorMsg}
+				</p>
 			</div>
       )
   }
 }
-Channels.contextTypes = {
+Settings.contextTypes = {
   store: React.PropTypes.object
 }
-//Channels.propTypes = {
-//  channels: PropTypes.array.isRequired
-//}

@@ -1,3 +1,20 @@
+// path = path being inputted by user
+export const setArchiveDisplayPath = (path) => ({
+	type: 'SET_DISPLAY_ARCHIVE_PATH',
+	path
+})
+
+// Starts loading the archive specificed in the archive.displayPath
+export const startLoadArchive = () => ({
+	type: 'START_LOAD_ARCHIVE'
+})
+
+// path = local path to the archive.  This can be different than on start (for instance in cases where it failed)
+export const finishedLoadArchive = (path) => ({
+	type: 'FINISHED_LOAD_ARCHIVE',
+	path
+})
+
 export const startLoadChannels = () => ({
 	type: 'START_LOAD_CHANNELS',
 })
@@ -45,4 +62,13 @@ export const startLoadUsers = () => ({
 export const finishedLoadUsers = (usersInfo) => ({
 	type: 'FINISHED_LOAD_USERS',
 	usersInfo
+})
+
+export const toggleSettingsUi = () => ({
+	type: 'TOGGLE_SETTINGS_UI'
+})
+
+export const setLoadErrorInSettings = (msg) => ({
+	type: 'SET_ARCHIVE_LOAD_ERROR_IN_SETTINGS',
+	msg
 })

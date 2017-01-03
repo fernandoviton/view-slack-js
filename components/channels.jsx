@@ -18,15 +18,14 @@ export default class Channels extends Component {
 				}))
 
     return (
-			<div style = {{fontFamily: "Tahoma, Verdana, Segoe, sans-serif"}}>
 			<Select
+				style = {{fontFamily: "Tahoma, Verdana, Segoe, sans-serif"}}
 				clearable={false}
 				name="channels"
 				value={channels.activeChannelName}
 				onChange={onChange}
 				options={options}
 				placeholder='Select a Channel'/>
-			</div>
       )
   }
 }

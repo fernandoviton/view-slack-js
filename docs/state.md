@@ -1,6 +1,14 @@
 ### State description
 
 state
+- settings
+	- hiddenUi
+	- loadArchiveErrorMsg
+- archive
+	- isLoading
+	- displayPath (can be different than other paths if the user is in progress of inputting path or we haven't yet loaded info from path)
+	- localPath
+- users
 - channels
 	- isLoading
 	- activeChannelName
@@ -37,3 +45,12 @@ message
 3. load message groups
 4. load messages
 5. set messages
+
+### Flow for setting state that needs validating
+1. User types in control
+2. On enter or whenever we are ready to commit the new value we trigger a startFoo action (via some middelware)
+3. This state is commited (that we are in progress)
+4. (UI can show based on this if it wants - like a spinner etc)
+5. Middleware starts asyncs and otherwise resolves the validity of the new value
+NOTE: if the data can be validated synchronously it could be done before step 2 instead
+6. When the operation finishes (either validating and/or fetching any data) we call finishedFoo with appropriate info (possibly including failure info)
