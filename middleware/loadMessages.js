@@ -2,6 +2,7 @@ import { defaultSlackArchivePath } from '../util/globalPaths'
 import { makePath } from '../util/paths'
 import { getMessagesFromDailyArchive } from '../util/loadArchives'
 import { startLoadMessages, finishedLoadMessages } from '../actions/index'
+import { startLoadMessageGroups, finishedLoadMessageGroups } from '../actions/index'
 
 export default (store, messageGroupNames) => {
 	console.log('Load messages for:', messageGroupNames)
@@ -24,4 +25,10 @@ export const loadMessagesForGroup = (store, messageGroupName) => {
 		const messages = getMessagesFromDailyArchive(currentDailyArchivePath)
 		store.dispatch(finishedLoadMessages(messageGroupName, messages))
 	}
+}
+
+export const clearMessageGroups = (store) =>
+{
+	store.dispatch(startLoadMessageGroups())	
+	store.dispatch(finishedLoadMessageGroups([]))
 }

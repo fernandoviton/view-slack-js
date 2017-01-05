@@ -15,8 +15,8 @@ test('toggleSettingsUi flips hiddenUi', () => {
 	expect(settings({hiddenUi: false}, toggleSettingsUi())).toEqual({hiddenUi: true})
 })
 
-test('toggleSettingsUi clears error msg', () => {
-	expect(settings({loadArchiveErrorMsg: 'hello'}, toggleSettingsUi()).loadArchiveErrorMsg).toEqual(undefined)
+test('toggleSettingsUi doesnt change error msg', () => {
+	expect(settings({loadArchiveErrorMsg: 'hello'}, toggleSettingsUi()).loadArchiveErrorMsg).toEqual('hello')
 })
 
 test('setLoadErrorInSettings sets error msg', () => {

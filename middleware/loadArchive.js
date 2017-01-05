@@ -1,14 +1,16 @@
-import { startLoadArchive, finishedLoadArchive, setLoadErrorInSettings } from '../actions/index'
-import loadUsers from './loadUsers'
-import loadChannels from './loadChannels'
+import { startLoadArchive, finishedLoadArchive, setLoadErrorInSettings, setArchiveDisplayPath } from '../actions/index'
+import loadUsers, { clearUsers }  from './loadUsers'
+import loadChannels, { clearChannels } from './loadChannels'
+import { clearMessageGroups } from './loadMessages'
 import { doesArchiveExist } from '../util/loadArchives'
 
 export default (store, path) => {
 	const originalPath = store.getState().archive.localPath
-	if (originalPath == path)
-		return
 
-	store.dispatch(startLoadArchive(path))
+	store.dispatch(setArchiveDisplayPath(path))
+	store.dispatch(startLoadArchive())
+
+	clearMessageGroups(store)
 
 	if (doesArchiveExist(path))
 	{
@@ -19,7 +21,9 @@ export default (store, path) => {
 	}
 	else
 	{
+		clearUsers(store)
+		clearChannels(store)
 		store.dispatch(setLoadErrorInSettings('Unable to find archive at: ' + path))
-		store.dispatch(finishedLoadArchive(originalPath))
+		store.dispatch(finishedLoadArchive(undefined))
 	}
 }

@@ -6,3 +6,9 @@ export default (store, path) => {
 	const usersInfo = getUsersAsJson(path);
 	store.dispatch(finishedLoadUsers(usersInfo))
 }
+
+export const clearUsers = (store) =>
+{
+	store.dispatch(startLoadUsers())	
+	store.dispatch(finishedLoadUsers([]))
+}
