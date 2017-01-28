@@ -7,3 +7,8 @@ export default (store, path) => {
 	const channelsInfo = getChannelsAsJson(path);
 	store.dispatch(finishedLoadChannels(channelsInfo))
 }
+
+export const clearChannels = (store) => {
+	store.dispatch(startLoadChannels())
+	store.dispatch(finishedLoadChannels([]))	
+}

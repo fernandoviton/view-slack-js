@@ -17,3 +17,7 @@ export default (store, channelName) => {
 	store.dispatch(finishedLoadMessageGroups(dailyArchivesNames))
 	loadMessages(store, [getLastOrEmpty(dailyArchivesNames)])
 }
+
+export const clearChannel = (store) => {
+	
+}

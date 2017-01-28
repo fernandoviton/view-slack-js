@@ -1,6 +1,5 @@
 import archive from './archive'
 import channels from './channels'
-import messages from './messages'
 import settings from './settings'
 import users from './users'
 import messageGroups from './messageGroups'
