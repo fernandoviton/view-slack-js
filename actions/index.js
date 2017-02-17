@@ -4,6 +4,13 @@ export const setArchiveDisplayPath = (path) => ({
 	path
 })
 
+// TODO CLEANUP: Merge finishedLoadArchive with this and rename startLoadArchive to 
+// something like loadArchiveInProgress (or even make an option on loadArchive)
+export const loadArchive = (filePath) => ({
+	type: 'LOAD_ARCHIVE',
+	filePath
+})
+
 // Starts loading the archive specificed in the archive.displayPath
 export const startLoadArchive = () => ({
 	type: 'START_LOAD_ARCHIVE'
