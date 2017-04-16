@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { setArchiveDisplayPath, loadArchive } from '../actions/index'
+import Dropbox from 'Dropbox'
+
 
 const divStyle = {padding:10}
 const inputStyle = {width:"100%"}
@@ -14,7 +16,8 @@ export default class Settings extends Component {
 
     return (
 			<div hidden={settings.hiddenUi} style={divStyle}>
-       	<input 
+				<button onClick={onChooseFromDropboxClick}>Choose from Dropbox</button>
+       	<input
 				 	type="url"
 					style={inputStyle}
 					value={archive.displayPath}
@@ -32,3 +35,14 @@ export default class Settings extends Component {
 Settings.contextTypes = {
   store: React.PropTypes.object
 }
+
+const onChooseFromDropboxClick = () => {
+	const options = {
+		success: (files) => {
+			alert("Here's the file link: " + files[0].link)
+		}
+	}
+
+	Dropbox.choose
+}
+
