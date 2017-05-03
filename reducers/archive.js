@@ -1,8 +1,6 @@
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case 'START_LOAD_ARCHIVE':
-      return { ...state, isLoading: true, localPath: undefined }
-    case 'FINISHED_LOAD_ARCHIVE':
+    case 'LOAD_ARCHIVE':
       return { ...state, localPath: action.path }
     case 'SET_DISPLAY_ARCHIVE_PATH':
        return {...state, displayPath: action.path }
@@ -12,7 +10,6 @@ export default (state = defaultState, action) => {
 }
 
 const defaultState = {
-  isLoading: false, 
-  displayPath: '', 
+  displayPath: '',
   localPath: undefined
 }

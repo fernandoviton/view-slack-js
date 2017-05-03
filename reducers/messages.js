@@ -1,23 +1,15 @@
 export default (
-	state = 
+	state =
 	{
-		isLoading: false, 
 		items: []
-	}, 
+	},
 	action) => {
   switch (action.type) {
-		case 'START_LOAD_MESSAGES':
-			return { 
-				isLoading: true,
-				items: []
-			}
-		case 'FINISHED_LOAD_MESSAGES':
+		case 'SET_MESSAGES':
 			return {
-				isLoading: false,
 				items: action.messages.map((message) => ({id: message.ts, text: message.text, user: message.user}))
 			}
     default:
       return state
   }
 }
-	
