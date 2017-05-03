@@ -1,5 +1,7 @@
 ### State description
 
+// TODO: update docs, merge messageGroups/Messages, switch to action based reducers, get rid of fake reducers
+
 state
 - settings
 	- hiddenUi

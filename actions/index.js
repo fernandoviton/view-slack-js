@@ -4,17 +4,6 @@ export const loadArchive = (path) => ({
 	path
 })
 
-// Loads the messageGroups of the active channel
-export const loadMessageGroups = () => ({
-	type: 'LOAD_MESSAGE_GROUPS'
-})
-
-// load messages of the given group name
-export const loadMessages = (messageGroupName) => ({
-	type: 'LOAD_MESSAGES',
-	messageGroupName
-})
-
 export const setActiveChannel = (channelName) => ({
 	type: 'SET_ACTIVE_CHANNEL',
 	channelName

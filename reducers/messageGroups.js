@@ -15,10 +15,12 @@ export default (
 			return {...state, items: state.items.map((item) => item.name == action.messageGroupName
 				? createMessageGroup(item.name, messages(item.messages, action))
 				: item)}
-    default:
-      return state
-  }
+		default:
+			return state
+	}
 }
 
 const createMessageGroup = (name, messages = {items: []}) => {
-  return {name, messages}}
+	console.log('Hello ', name)
+	return {name, messages}
+}

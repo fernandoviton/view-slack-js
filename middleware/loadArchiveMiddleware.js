@@ -7,7 +7,7 @@ export default store => next => action => {
 		console.log("Middleware Handling LOAD_ARCHIVE")
 
 		const originalPath = store.getState().archive.localPath
-		const path = action.filePath
+		const path = action.path
 
 		// first clear current view and set the new path
 		store.dispatch(setUsers([]))
