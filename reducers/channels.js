@@ -1,10 +1,7 @@
 export default (state = {isLoading: false, activeChannelName: undefined, items: []}, action) => {
   switch (action.type) {
-    case 'START_LOAD_CHANNELS':
-      return { isLoading: true, items: [] }
-     case 'FINISHED_LOAD_CHANNELS':
-      return { 
-        isLoading: false,
+     case 'SET_CHANNELS':
+      return {
         items: action.channelsInfo
           .map((channelInfo) => createChannel(channelInfo))
         }

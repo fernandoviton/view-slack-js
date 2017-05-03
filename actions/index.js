@@ -17,7 +17,7 @@ export const loadMessages = (messageGroupName) => ({
 
 export const setActiveChannel = (channelName) => ({
 	type: 'SET_ACTIVE_CHANNEL',
-	channels
+	channelName
 })
 
 // channelsInfo[i].name
