@@ -1,35 +1,33 @@
-import { startLoadArchive, finishedLoadArchive, setLoadErrorInSettings, setArchiveDisplayPath } from '../actions/index'
-import loadUsers, { clearUsers }  from './loadUsers'
-import loadChannels, { clearChannels } from './loadChannels'
-import { clearMessageGroups } from './loadMessages'
-import { doesArchiveExist } from '../util/loadArchives'
+import { setLoadErrorInSettings, setMessageGroups, setUsers, setChannels, setArchiveDisplayPath } from '../actions/index'
+import { doesArchiveExist, getUsersAsJson, getChannelsAsJson } from '../util/loadArchives'
 
 export default store => next => action => {
 	if (action.type === 'LOAD_ARCHIVE') {
 		console.log("Middleware Handling LOAD_ARCHIVE")
-		
+
 		const originalPath = store.getState().archive.localPath
 		const path = action.filePath
 
-		store.dispatch(setArchiveDisplayPath(path))
-		store.dispatch(startLoadArchive())
-
-		clearMessageGroups(store)
+		// first clear current view and set the new path
+		store.dispatch(setUsers([]))
+		store.dispatch(setChannels([]))
+		store.dispatch(setMessageGroups([]))
+		store.dispatch(setLoadErrorInSettings(undefined))
 
 		if (doesArchiveExist(path))
 		{
-			loadUsers(store, path)
-			loadChannels(store, path)
-			store.dispatch(setLoadErrorInSettings(undefined))		
-			store.dispatch(finishedLoadArchive(path))
+			const usersInfo = getUsersAsJson(path);
+			const channelsInfo = getChannelsAsJson(path);
+
+			// set new data
+			store.dispatch(setUsers(usersInfo))
+			store.dispatch(setChannels(channelsInfo))
 		}
 		else
 		{
-			clearUsers(store)
-			clearChannels(store)
 			store.dispatch(setLoadErrorInSettings('Unable to find archive at: ' + path))
-			store.dispatch(finishedLoadArchive(undefined))
 		}
 	}
+
 	return next(action)
 }

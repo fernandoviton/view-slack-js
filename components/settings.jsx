@@ -14,10 +14,10 @@ export default class Settings extends Component {
 		const { settings } = store.getState()
 		const { archive } = store.getState()
 
-    return (
+		return (
 			<div hidden={settings.hiddenUi} style={divStyle}>
 				<button onClick={onChooseFromDropboxClick}>Choose from Dropbox</button>
-       	<input
+				<input
 				 	type="url"
 					style={inputStyle}
 					value={archive.displayPath}
@@ -29,8 +29,8 @@ export default class Settings extends Component {
 					{settings.loadArchiveErrorMsg}
 				</p>
 			</div>
-      )
-  }
+			)
+	}
 }
 Settings.contextTypes = {
   store: React.PropTypes.object
