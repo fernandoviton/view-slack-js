@@ -1,7 +1,7 @@
 // Loads the archive: users and the channels list
-export const loadArchive = (filePath) => ({
+export const loadArchive = (path) => ({
 	type: 'LOAD_ARCHIVE',
-	filePath
+	path
 })
 
 // Loads the messageGroups of the active channel
@@ -47,7 +47,7 @@ export const setMessages = (messageGroupName, messages) => ({
 })
 
 export const setLoadErrorInSettings = (msg) => ({
-	type: 'SET_ARCHIVE_LOAD_ERROR_IN_SETTINGS',
+	type: 'SET_LOAD_ERROR_IN_SETTINGS',
 	msg
 })
 
