@@ -6,7 +6,7 @@
   "repository": "fernandoviton/view-slack-js",
   "scripts": {
     "start": "electron .",
-    "test": "eslint ./**/*.js /**/*.jsx;jest --silent"
+    "test": "eslint ./**/*.js ./**/*.jsx;jest --silent"
   },
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
