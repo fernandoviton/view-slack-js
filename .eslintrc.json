@@ -7,6 +7,12 @@
         ],
         "eol-last" : [
             "off"
+        ],
+        "react/jsx-indent-props": [
+            "off"
+        ],
+        "react/jsx-indent": [
+            "off"
         ]
     }
 }

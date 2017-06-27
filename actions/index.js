@@ -1,51 +1,51 @@
 // Loads the archive: users and the channels list
-export const loadArchive = (path) => ({
+export const loadArchive = path => ({
 	type: 'LOAD_ARCHIVE',
-	path
-})
+	path,
+});
 
-export const setActiveChannel = (channelName) => ({
+export const setActiveChannel = channelName => ({
 	type: 'SET_ACTIVE_CHANNEL',
-	channelName
-})
+	channelName,
+});
 
 // channelsInfo[i].name
-export const setChannels = (channelsInfo) => ({
+export const setChannels = channelsInfo => ({
 	type: 'SET_CHANNELS',
-	channelsInfo
-})
+	channelsInfo,
+});
 
 // usersInfo[i].name
-export const setUsers = (usersInfo) => ({
+export const setUsers = usersInfo => ({
 	type: 'SET_USERS',
-	usersInfo
-})
+	usersInfo,
+});
 
 // messageGroupInfo[i].name
-export const setMessageGroups = (messageGroupsInfo) => ({
+export const setMessageGroups = messageGroupsInfo => ({
 	type: 'SET_MESSAGE_GROUPS',
-	messageGroupsInfo
-})
+	messageGroupsInfo,
+});
 
 // messages[i].text = text of message
 // messages[i].ts = unique id
 export const setMessages = (messageGroupName, messages) => ({
 	type: 'SET_MESSAGES',
 	messageGroupName,
-	messages
-})
+	messages,
+});
 
-export const setLoadErrorInSettings = (msg) => ({
+export const setLoadErrorInSettings = msg => ({
 	type: 'SET_LOAD_ERROR_IN_SETTINGS',
-	msg
-})
+	msg,
+});
 
 // path = path being inputted by user
-export const setArchiveDisplayPath = (path) => ({
+export const setArchiveDisplayPath = path => ({
 	type: 'SET_DISPLAY_ARCHIVE_PATH',
-	path
-})
+	path,
+});
 
 export const toggleSettingsUi = () => ({
-	type: 'TOGGLE_SETTINGS_UI'
-})
+	type: 'TOGGLE_SETTINGS_UI',
+});
