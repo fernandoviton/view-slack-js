@@ -1,3 +1,12 @@
 {
-    "extends": "airbnb"
+    "extends": "airbnb",
+    "rules": {
+        "no-tabs": "off",
+        "indent" : [
+            "off"
+        ],
+        "eol-last" : [
+            "off"
+        ]
+    }
 }
