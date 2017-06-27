@@ -2,6 +2,8 @@ import { setLoadErrorInSettings, setMessageGroups, setUsers, setChannels, setArc
 import { doesArchiveExist, getUsersAsJson, getChannelsAsJson } from '../util/loadArchives'
 
 export default store => next => action => {
+	const nextAction = next(action);
+
 	// TODO: probably should split and add an action this can dispatch when done with async
 	if (action.type === 'LOAD_ARCHIVE') {
 		console.log("Middleware Handling LOAD_ARCHIVE")
@@ -10,6 +12,7 @@ export default store => next => action => {
 		const path = action.path
 
 		// first clear current view and set the new path
+		store.dispatch(setArchiveDisplayPath(path))
 		store.dispatch(setUsers([]))
 		store.dispatch(setChannels([]))
 		store.dispatch(setMessageGroups([]))
@@ -30,5 +33,5 @@ export default store => next => action => {
 		}
 	}
 
-	return next(action)
+	return nextAction;
 }
