@@ -4,7 +4,10 @@ import { getDailyArchiveNames } from '../util/loadArchives';
 import loadMessages from './loadMessages';
 import { setMessageGroups, setActiveChannel } from '../actions/index';
 
-const getLastOrEmpty = arrayOfStrings => arrayOfStrings.length === 0 ? '' : arrayOfStrings[arrayOfStrings.length - 1];
+const getLastOrEmpty = arrayOfStrings =>
+	(arrayOfStrings.length === 0
+		? ''
+		: arrayOfStrings[arrayOfStrings.length - 1]);
 
 export default (store, channelName) => {
 	store.dispatch(setActiveChannel(channelName));

@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import Dropbox from 'dropbox';
+import React, { Component } from 'react';
 import { setArchiveDisplayPath, loadArchive } from '../actions/index';
-import Dropbox from 'Dropbox';
 
 
 const divStyle = { padding: 10 };
@@ -8,13 +8,13 @@ const inputStyle = { width: '100%' };
 const errorStyle = { width: '100%', fontStyle: 'italic', color: 'red', margin: 2, padding: 0 };
 
 const onChooseFromDropboxClick = () => {
-	const options = {
-		success: (files) => {
-			alert(`Here's the file link: ${files[0].link}`);
-		},
-	};
+	// const options = {
+	//	success: (files) => {
+	//		alert(`Here's the file link: ${files[0].link}`);
+	//	},
+	// };
 
-	Dropbox.choose;
+	// Dropbox.choose;
 };
 
 export default class Settings extends Component {

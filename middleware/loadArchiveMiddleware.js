@@ -8,7 +8,6 @@ export default store => next => (action) => {
 	if (action.type === 'LOAD_ARCHIVE') {
 		console.log('Middleware Handling LOAD_ARCHIVE');
 
-		const originalPath = store.getState().archive.localPath;
 		const path = action.path;
 
 		// first clear current view and set the new path

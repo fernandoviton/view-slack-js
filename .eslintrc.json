@@ -2,6 +2,7 @@
     "extends": "airbnb",
     "rules": {
         "no-tabs": "off",
+        "import/prefer-default-export": "off",
         "indent" : [
             "off"
         ],
@@ -16,6 +17,36 @@
         ],
 
         // TODO: figure out how to remove
-        "no-undef": "off"
+        "no-undef": "off",
+        "no-console": "off",
+        "no-mixed-spaces-and-tabs": "error", // TODO: this is in base and doesn't seem to work
+        "no-case-declarations": "off",
+        "import/no-extraneous-dependencies" : "off",
+        "react/prefer-stateless-function": [
+            "off"
+        ],
+        "no-restricted-syntax": [
+            "error",
+            {
+                "selector": "ForInStatement",
+                "message": "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array."
+            },
+            {
+                "selector": "LabeledStatement",
+                "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
+            },
+            {
+                "selector": "WithStatement",
+                "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
+            }
+        ],
+        "no-unused-vars": [
+            "off",
+            {
+                "vars": "all",
+                "args": "after-used", // TODO: this is the part we needed to disable due to lamdas where we don't use all the args
+                "ignoreRestSiblings": true
+            }
+        ]
     }
 }
