@@ -1,4 +1,9 @@
-import messages from './messages'
+import messages from './messages';
+
+const createMessageGroup = (name, messageItems = { items: [] }) => {
+	console.log('Hello ', name);
+	return { name, messages: messageItems };
+};
 
 export default (
 	state =
@@ -9,18 +14,14 @@ export default (
   switch (action.type) {
 		case 'SET_MESSAGE_GROUPS':
 			return {
-				items: action.messageGroupsInfo.map((info) => createMessageGroup(info.name)),
-			}
+				items: action.messageGroupsInfo.map(info => createMessageGroup(info.name)),
+			};
 		case 'SET_MESSAGES':
-			return {...state, items: state.items.map((item) => item.name == action.messageGroupName
-				? createMessageGroup(item.name, messages(item.messages, action))
-				: item)}
+			return { ...state,
+				items: state.items.map(item => (item.name === action.messageGroupName
+					? createMessageGroup(item.name, messages(item.messages, action))
+					: item)) };
 		default:
-			return state
+			return state;
 	}
-}
-
-const createMessageGroup = (name, messages = {items: []}) => {
-	console.log('Hello ', name)
-	return {name, messages}
-}
+};

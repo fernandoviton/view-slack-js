@@ -1,4 +1,4 @@
 import { applyMiddleware } from 'redux';
-import loadArchiveMiddleware from './loadArchiveMiddleware'
+import loadArchiveMiddleware from './loadArchiveMiddleware';
 
-export default () => applyMiddleware(loadArchiveMiddleware)
+export default () => applyMiddleware(loadArchiveMiddleware);
