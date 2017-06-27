@@ -49,3 +49,12 @@ export const setArchiveDisplayPath = path => ({
 export const toggleSettingsUi = () => ({
 	type: 'TOGGLE_SETTINGS_UI',
 });
+
+export const setActiveSearch = text => ({
+	type: 'SET_ACTIVE_SEARCH',
+	text,
+});
+
+export const doSearch = () => ({
+	type: 'DO_SEARCH',
+});

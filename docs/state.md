@@ -23,10 +23,14 @@ state
 			- items[] : message
 		}
 	}
+- activeSearch
+	- searchText
 
 message
 	- id
 	- text
+	- user
+	- isCurrentSearchResult
 
 ### Messages details:
 1. Adding more messages to a loaded message group consists of:
