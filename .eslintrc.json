@@ -13,6 +13,9 @@
         ],
         "react/jsx-indent": [
             "off"
-        ]
+        ],
+
+        // TODO: figure out how to remove
+        "no-undef": "off"
     }
 }
