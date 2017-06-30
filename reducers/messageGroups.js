@@ -1,6 +1,6 @@
 import messages from './messages';
 
-const createMessageGroup = (name, messageItems = { items: [] }) =>
+export const createMessageGroup = (name, messageItems = { items: [] }) =>
 	({ name, messages: messageItems });
 
 export default (

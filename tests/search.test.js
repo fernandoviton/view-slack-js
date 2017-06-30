@@ -15,3 +15,7 @@ test('setActiveSearch changes activeSearch', () => {
 			searchText: 'something',
 		});
 });
+
+test('doSearch sets display on loaded messages that match', () => {
+// TODO: need easier way to create state
+});

@@ -6,8 +6,11 @@ test('default messages state', () => {
 });
 
 test('setMessages sets items', () => {
+	const expectedDisplay = {
+		isActiveSearchResult: false,
+	};
 	const messageItems = [{ ts: 'a', text: 'aText' }, { ts: 'b', text: 'bText' }];
-	const messageItemsExpected = [{ id: 'a', text: 'aText' }, { id: 'b', text: 'bText' }];
+	const messageItemsExpected = [{ id: 'a', text: 'aText', display: expectedDisplay }, { id: 'b', text: 'bText', display: expectedDisplay }];
 	expect(messages({ items: ['something'] }, setMessages('group', messageItems)).items)
 		.toEqual(messageItemsExpected);
 });
