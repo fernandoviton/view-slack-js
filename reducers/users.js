@@ -1,18 +1,16 @@
-export default (state = {isLoading: false, items: []}, action) => {
+const createUser = userInfo => ({ name: userInfo.name });
+
+export default (state = { isLoading: false, items: [] }, action) => {
   switch (action.type) {
      case 'SET_USERS':
       const userMap = action.usersInfo.reduce((map, userInfo) => {
-        map.set(userInfo.id, createUser(userInfo))
-        return map
-        }, new Map())
+        map.set(userInfo.id, createUser(userInfo));
+        return map;
+        }, new Map());
       return {
-        items: userMap
-        }
+        items: userMap,
+        };
      default:
-      return state
+      return state;
   }
-}
-
-const createUser = (userInfo) => {
-  return { name: userInfo.name }
-}
+};
