@@ -7,4 +7,5 @@ export const setActiveSearch = (state, text) =>
 
 export const doSearch = state =>
 ({ ...state,
+	messageGroups,
 });
