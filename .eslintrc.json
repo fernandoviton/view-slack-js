@@ -25,6 +25,8 @@
         "react/prefer-stateless-function": [
             "off"
         ],
+        "react/no-render-return-value": "off",
+        "react/jsx-filename-extension": "off",
         "no-restricted-syntax": [
             "error",
             {

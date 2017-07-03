@@ -3,6 +3,7 @@
 // TODO: update docs, merge messageGroups/Messages, switch to action based reducers, get rid of fake reducers
 // TODO: turn this into a type lint?
 
+// TODO: move to initialState
 state
 - settings
 	- hiddenUi

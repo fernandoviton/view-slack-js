@@ -1,0 +1,5 @@
+node_modules/
+data/
+view-slack-darwin-*/
+coverage/
+old/
