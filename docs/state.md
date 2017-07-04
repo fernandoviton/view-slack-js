@@ -1,6 +1,7 @@
 ### State description
 
 // TODO: update docs, merge messageGroups/Messages, switch to action based reducers, get rid of fake reducers
+// TODO: turn this into a type lint?
 
 state
 - settings
@@ -19,14 +20,19 @@ state
 	- items[] : {
 		- name
 		- messages : {
-			- isLoading
 			- items[] : message
 		}
 	}
+- activeSearch
+	- searchText
 
 message
-	- id
-	- text
+	id
+	text
+	user
+	display: {
+		isActiveSearchResult
+	}
 
 ### Messages details:
 1. Adding more messages to a loaded message group consists of:

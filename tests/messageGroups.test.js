@@ -28,8 +28,14 @@ test('fsetMessages when item is not present is no-op', () => {
 });
 
 test('setMessages of "a" will sets fields of "a"', () => {
+	const expectedDisplay = {
+		isActiveSearchResult: false,
+	};
 	const messageItems = [{ ts: 'a', text: 'aText' }, { ts: 'b', text: 'bText' }];
-	const messageItemsExpected = { items: [{ id: 'a', text: 'aText' }, { id: 'b', text: 'bText' }] };
+	const messageItemsExpected = { items: [
+		{ id: 'a', text: 'aText', display: expectedDisplay },
+		{ id: 'b', text: 'bText', display: expectedDisplay }],
+	};
 	expect(messageGroups({ items: [{ name: 'a' }, { name: 'b' }] }, setMessages('a', messageItems)).items)
 		.toEqual([{ name: 'a', messages: messageItemsExpected }, { name: 'b' }]);
 });

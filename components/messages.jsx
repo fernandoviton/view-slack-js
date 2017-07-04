@@ -8,6 +8,7 @@ const buttonStyle = { textAlignment: 'center', backgroundColor: '#4C9689', color
 const listStyle = { listStyle: 'none', padding: 10 };
 
 const itemStyle = { padding: 10, borderWidth: 0.1, borderRadius: 0.1, borderColor: '#dddddd' };
+const itemStyleSearchResult = { ...itemStyle, backgroundColor: '#ddaa00' };
 
 const getDisplayUserName = (users, userId) => {
   const user = users.get(userId);
@@ -19,9 +20,13 @@ const getDisplayStringFromMessageGroupName = filename =>
   // might be but then we have to remap messages appropriately too
    stripExtension(filename);
 
-const htmlItemFromMessage = (message, users) => (<li key={message.id} style={itemStyle}>
-                  {`${getDisplayUserName(users, message.user)}: ${message.text}`}
-                </li>);
+const htmlItemFromMessage = (message, users) => (
+    <li
+      key={message.id}
+      style={message.display.isActiveSearchResult ? itemStyleSearchResult : itemStyle}
+    >
+      {`${getDisplayUserName(users, message.user)}: ${message.text}`}
+    </li>);
 
 const htmlItemsFromMessageGroup = (messageGroup, users) =>
   messageGroup.messages.items.map(message => htmlItemFromMessage(message, users));
@@ -35,6 +40,9 @@ const htmlMessageGroupHeader = date => (<p
 const htmlLoadMoreButton = (label, onClick) =>
   <button style={buttonStyle} onClick={onClick}>{label}</button>;
 
+// TODO: there is a bunch of logic that should not be in the view
+// for instance showPreviousMessages should be an action and the logic
+// should be handled in middleware or reducers
 export default class Messages extends Component {
 	render() {
     const { store } = this.context;

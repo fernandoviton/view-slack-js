@@ -8,7 +8,14 @@ export default (
 		case 'SET_MESSAGES':
 			return {
 				items: action.messages.map(message =>
-					({ id: message.ts, text: message.text, user: message.user })),
+					({
+						id: message.ts,
+						text: message.text,
+						user: message.user,
+						display: {
+							isActiveSearchResult: false,
+						},
+					})),
 			};
 		default:
 			return state;

@@ -4,6 +4,7 @@ import React from 'react';
 import Settings from './settings';
 import Channels from './channels';
 import Messages from './messages';
+import Search from './search';
 import { toggleSettingsUi } from '../actions/index';
 
 export default class Root extends React.Component {
@@ -14,10 +15,11 @@ export default class Root extends React.Component {
       <div>
          <button onClick={() => { store.dispatch(toggleSettingsUi()); }}>...</button>
          <Settings />
-        <Channels />
+         <Channels />
       </div>
       <div>
         <Messages />
+        <Search />
       </div>
     </div>);
   }
