@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
+import { setActiveChannel } from '../../state/actions';
 
 export default class Channels extends Component {
   render() {
@@ -7,7 +8,8 @@ export default class Channels extends Component {
 		const { channels } = store.getState();
 		const { activeChannelName } = store.getState();
 		const onChange = (selectedOption) => {
-			// loadChannel(store, selectedOption.value);
+			store.dispatch(setActiveChannel(selectedOption.value));
+			// TODO: replace with a loadChannel action
 		};
 
 		const options = channels.map(
