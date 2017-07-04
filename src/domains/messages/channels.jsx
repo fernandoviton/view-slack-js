@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import loadChannel from '../middleware/loadChannel';
 
 export default class Channels extends Component {
   render() {
 		const { store } = this.context;
 		const { channels } = store.getState();
+		const { activeChannelName } = store.getState();
 		const onChange = (selectedOption) => {
-			loadChannel(store, selectedOption.value);
+			// loadChannel(store, selectedOption.value);
 		};
 
-		const options = channels.items.map(
+		const options = channels.map(
 			channel => ({
 					value: channel.name,
 					label: channel.name,
@@ -22,13 +22,13 @@ export default class Channels extends Component {
 				style={{ fontFamily: 'Tahoma, Verdana, Segoe, sans-serif' }}
 				clearable={false}
 				name="channels"
-				value={channels.activeChannelName}
+				value={activeChannelName}
 				onChange={onChange}
 				options={options}
 				placeholder="Select a Channel"
 			/>
-      );
-  }
+			);
+	}
 }
 Channels.contextTypes = {
   store: React.PropTypes.object,

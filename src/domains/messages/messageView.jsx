@@ -1,4 +1,5 @@
 import React from 'react';
+import Channels from './channels';
 
 const listStyle = { listStyle: 'none', padding: 10 };
 const itemStyle = { padding: 10, borderWidth: 0.1, borderRadius: 0.1, borderColor: '#dddddd' };
@@ -16,13 +17,14 @@ const messageHtml = message => (
 export default class MessageView extends React.Component {
 	render() {
 		const { store } = this.context;
-		const state = store.getState();
+		const { activeMessages } = store.getState();
 
 		return (
 			<div style={{ fontFamily: 'Tahoma, Verdana, Segoe, sans-serif' }}>
+				<Channels />
 				<ul style={listStyle}>
 				{
-					state.activeMessages.map(message => messageHtml(message))
+					activeMessages.map(message => messageHtml(message))
 				}
 				</ul>
 			</div>);
