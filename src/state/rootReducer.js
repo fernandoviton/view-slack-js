@@ -1,7 +1,7 @@
-import InitialState from './initialState';
+import { initialState } from './initialState';
 
 export default (
-	state = InitialState,
+	state = initialState,
 	action) => {
 	console.log('handling action:', action);
 
