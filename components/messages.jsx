@@ -20,12 +20,16 @@ const getDisplayStringFromMessageGroupName = filename =>
   // might be but then we have to remap messages appropriately too
    stripExtension(filename);
 
+const getDisplayTextFromMessageText = messageText =>messageText
+  .split('\n')
+  .map(t => <div>{t}</div>)
+
 const htmlItemFromMessage = (message, users) => (
     <li
       key={message.id}
       style={message.display.isActiveSearchResult ? itemStyleSearchResult : itemStyle}
     >
-      {`${getDisplayUserName(users, message.user)}: ${message.text}`}
+      {getDisplayTextFromMessageText(getDisplayUserName(users, message.user) + ': ' + message.text)}
     </li>);
 
 const htmlItemsFromMessageGroup = (messageGroup, users) =>
