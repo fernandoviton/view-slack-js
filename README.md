@@ -35,10 +35,20 @@ npm start
 ```
 
 ## Deployment
+There are some scripts included in this repo that will package and zip.
+You must be on the appropriate system to create a package for that system.
 
+Mac (in terminal):
 ```bash
-electron-packager . -all
+chmod u+x make-package-mac.sh
+make-package-mac.sh
 ```
+
+Windows (in powershell):
+```bash
+make-package-win.ps1
+```
+
 
 ## Dep
 - Initially copied from https://github.com/b52/electron-es6-react

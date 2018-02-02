@@ -2,4 +2,6 @@ node_modules
 data
 view-slack-darwin-*/
 view-slack-win*/
+view-slack-win-*.zip
+view-slack-mac-*.zip
 coverage/
