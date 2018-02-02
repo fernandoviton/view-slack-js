@@ -1,6 +1,7 @@
 import Dropbox from 'dropbox';
 import React, { Component } from 'react';
 import { setArchiveDisplayPath, loadArchive } from '../actions/index';
+import getAppVersion from '../util/getAppVersion';
 
 
 const divStyle = { padding: 10 };
@@ -25,7 +26,9 @@ export default class Settings extends Component {
 
 		return (
 			<div hidden={settings.hiddenUi} style={divStyle}>
-				<button onClick={onChooseFromDropboxClick}>Choose from Dropbox</button>
+		        <label>View-Slack Version: {getAppVersion()}</label>
+				<br/>
+				{false && <button onClick={onChooseFromDropboxClick}>Choose from Dropbox</button>}
 				<input
 					type="url"
 					style={inputStyle}

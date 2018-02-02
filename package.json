@@ -1,6 +1,6 @@
 {
   "name": "view-slack",
-  "version": "0.1.0",
+  "version": "0.2.2",
   "main": "bootstrapper.js",
   "license": "MIT",
   "repository": "fernandoviton/view-slack-js",

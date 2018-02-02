@@ -7,9 +7,10 @@ import { Provider } from 'react-redux';
 import { defaultSlackArchivePath } from './util/globalPaths'
 import getAllMiddleware from './middleware/getAllMiddleware'
 import { loadArchive } from './actions/index'
+import { app } from 'electron'
 
 const store = createStore(rootReducer, getAllMiddleware());
-console.log('created store', store.getState())
+//console.log('created store', store.getState())
 const render = () => ReactDOM.render(
   <Provider store={store}>
     <Root />

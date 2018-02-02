@@ -6,7 +6,7 @@ export default store => next => (action) => {
 
 	// TODO: probably should split and add an action this can dispatch when done with async
 	if (action.type === 'LOAD_ARCHIVE') {
-		console.log('Middleware Handling LOAD_ARCHIVE');
+		//console.log('Middleware Handling LOAD_ARCHIVE');
 
 		const path = action.path;
 

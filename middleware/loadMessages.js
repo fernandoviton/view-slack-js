@@ -17,7 +17,7 @@ export const loadMessagesForGroup = (store, messageGroupName) => {
 };
 
 export default (store, messageGroupNames) => {
-	console.log('Load messages for:', messageGroupNames);
+	// console.log('Load messages for:', messageGroupNames);
 	for (const messageGroupName of messageGroupNames)	{
 		loadMessagesForGroup(store, messageGroupName);
 	}

@@ -13,7 +13,7 @@ export default (store, channelName) => {
 	store.dispatch(setActiveChannel(channelName));
 	const channelPath = makePath(defaultSlackArchivePath, channelName);
 	const dailyArchivesNames = getDailyArchiveNames(channelPath);
-	console.log(dailyArchivesNames);
+	// console.log(dailyArchivesNames);
 	store.dispatch(setMessageGroups(dailyArchivesNames.map(name => ({ name }))));
 	loadMessages(store, [getLastOrEmpty(dailyArchivesNames)]);
 };

@@ -12,7 +12,7 @@ export default (state =
 		},
 	},
 	action) => {
-	console.log('handling action:', action);
+	// console.log('handling action:', action);
 
 	switch (action.type) {
 		case 'SET_ACTIVE_SEARCH':
