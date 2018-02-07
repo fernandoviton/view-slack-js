@@ -55,6 +55,16 @@ export const setActiveSearch = text => ({
 	text,
 });
 
+export const doSearchNow = () => ({
+	type: 'DO_SEARCH',
+});
+
 export const doSearch = () => ({
 	type: 'DO_SEARCH',
+
+	meta: {
+		debounce: {
+			time: 500
+		}
+	}
 });

@@ -18,8 +18,8 @@ export default class Root extends React.Component {
          <Channels />
       </div>
       <div>
-        <Messages />
         <Search />
+        <Messages />
       </div>
     </div>);
   }

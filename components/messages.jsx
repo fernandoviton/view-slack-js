@@ -8,7 +8,7 @@ const buttonStyle = { textAlignment: 'center', backgroundColor: '#4C9689', color
 const listStyle = { listStyle: 'none', padding: 10 };
 
 const itemStyle = { padding: 10, borderWidth: 0.1, borderRadius: 0.1, borderColor: '#dddddd' };
-const itemStyleSearchResult = { ...itemStyle, backgroundColor: '#ddaa00' };
+const itemStyleSearchResult = { ...itemStyle, backgroundColor: '#4C9689', color: 'white' };
 
 const getDisplayUserName = (users, userId) => {
   const user = users.get(userId);
@@ -20,7 +20,7 @@ const getDisplayStringFromMessageGroupName = filename =>
   // might be but then we have to remap messages appropriately too
    stripExtension(filename);
 
-const getDisplayTextFromMessageText = messageText =>messageText
+const getDisplayTextFromMessageText = messageText => messageText
   .split('\n')
   .map(t => <div>{t}</div>)
 

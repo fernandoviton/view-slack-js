@@ -19,6 +19,11 @@ export default (state =
 			return setActiveSearch(state, action.text);
 		case 'DO_SEARCH':
 			return doSearch(state);
+		case 'SET_ACTIVE_CHANNEL':
+			return {
+				...setActiveSearch(state, ''),
+				channels: channels(state.channels, action)
+			};
 		default:
 			return { ...state,
 				settings: settings(state.settings, action),
