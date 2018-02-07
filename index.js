@@ -9,8 +9,20 @@ import getAllMiddleware from './middleware/getAllMiddleware'
 import { loadArchive } from './actions/index'
 import { app } from 'electron'
 
-const store = createStore(rootReducer, getAllMiddleware());
-//console.log('created store', store.getState())
+const composeEnhancers =
+    typeof window === 'object' &&
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+            // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+  }) : compose;
+
+const enhancers = composeEnhancers(
+  getAllMiddleware(),
+    // other store enhancers if any
+  );
+
+const store = createStore(rootReducer, enhancers);
+
 const render = () => ReactDOM.render(
   <Provider store={store}>
     <Root />
