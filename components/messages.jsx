@@ -10,6 +10,9 @@ const listStyle = { listStyle: 'none', padding: 10 };
 const itemStyle = { padding: 10, borderWidth: 0.1, borderRadius: 0.1, borderColor: '#dddddd' };
 const itemStyleSearchResult = { ...itemStyle, backgroundColor: '#4C9689', color: 'white' };
 
+const imageStyle = { padding: 10, borderWidth: 0.1, borderRadius: 0.1, borderColor: '#dddddd' };
+
+
 const getDisplayUserName = (users, userId) => {
   const user = users.get(userId);
   return user === undefined ? '???' : user.name;
@@ -24,12 +27,36 @@ const getDisplayTextFromMessageText = messageText => messageText
   .split('\n')
   .map(t => <div>{t}</div>)
 
+const htmlItemFromFileImage = fileImage => (
+  <li
+    key={fileImage.id}
+    style={imageStyle}
+  >
+    <a href={fileImage.url_private} target="_blank" rel="noopener"><img src={fileImage.thumb_480 || fileImage.thumb_360}/></a>
+  </li>)
+
+const isImageFile = (file) => {
+  const filetype = file.filetype.toUpperCase();
+  const isImage = (filetype === 'PNG' || filetype === 'JPG' || filetype === 'JPEG');
+  console.log("isImageFile", isImage, file);
+  return isImage;
+}
+
+const htmlItemsFromFileImages = fileImages => {
+  console.log("fileImages", fileImages);
+  return (
+    <ul>
+      {fileImages.map(fileImage => htmlItemFromFileImage(fileImage))}
+    </ul>
+  )}
+
 const htmlItemFromMessage = (message, users) => (
     <li
       key={message.id}
       style={message.display.isActiveSearchResult ? itemStyleSearchResult : itemStyle}
     >
-      {getDisplayTextFromMessageText(getDisplayUserName(users, message.user) + ': ' + message.text)}
+      {getDisplayTextFromMessageText(getDisplayUserName(users, message.user) + ': ' + message.text)
+        .concat(htmlItemsFromFileImages((message.files || []).filter(file => isImageFile(file))))}
     </li>);
 
 const htmlItemsFromMessageGroup = (messageGroup, users) =>

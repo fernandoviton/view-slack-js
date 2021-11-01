@@ -12,6 +12,7 @@ export default (
 						id: message.ts,
 						text: message.text,
 						user: message.user,
+						files: message.files,
 						display: {
 							isActiveSearchResult: false,
 						},

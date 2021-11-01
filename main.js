@@ -15,6 +15,10 @@ app.on('ready', () => {
 	mainWindow.on('closed', () => {
 		mainWindow = null;
 	});
+	mainWindow.webContents.on('new-window', function(e, url) {
+		e.preventDefault();
+		require('electron').shell.openExternal(url);
+	  });
 
 	installExtension(REDUX_DEVTOOLS)
 		.then((name) => console.log(`Added Extension:  ${name}`))
